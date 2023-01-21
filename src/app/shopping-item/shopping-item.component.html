@@ -2,7 +2,7 @@
 <!-- Card big  -->
 
 <div class="card_big" [id]="product.id"
-  [ngClass]="{
+[ngClass]="{
     'card_red' : product.salePercent>74,
     'card_yellow': product.salePercent<50,
     'card_orange' : product.salePercent>49&&product.salePercent<75
@@ -13,9 +13,11 @@
       <img [src]="product.image" alt="" class="card__img">
       <div class="card__sale-percent">{{product.salePercent}}% off</div>
     </div>
-    <div class="card__price">
-      <span class="card__price-sale">{{product.price*product.salePercent/100|currency}}</span>
-      <span class="card__price-old">{{product.price|currency}}</span>
+    <div class="card__price-and-shop">
+      <div class="card__prices">
+        <span class="card__price-sale">{{product.price*product.salePercent/100|currency}}</span>
+        <span class="card__price-old">{{product.price|currency}}</span>
+      </div>
       <div class="card__shop">{{product.shop}}</div>
     </div>
   </div>
@@ -25,4 +27,5 @@
   </ul>
 </div>
 
+<!-- Card small -->
 

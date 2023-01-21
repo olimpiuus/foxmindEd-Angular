@@ -5,8 +5,13 @@
 .card_yellow
   --main-color:var(--mid-orange)
 
+@mixin border-inside
+  border-bottom: dotted 1px var(--color-text)
+
 .card
   &_big
+    --color-text:#6b6b6b
+    color: var(--color-text)
     display: grid
     justify-content: space-between
     width: max(33%, 320px)
@@ -16,6 +21,7 @@
 
   &__img-wrapper
     position: relative
+
 
   &__img
     width: 100%
@@ -32,20 +38,34 @@
     color: white
     background-color: var(--main-color)
 
-  &__price
-
-
-  &__description
-
-
+  &__price-and-shop
+    @include border-inside
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 5px
   &__price
     &-sale
+      color: var(--main-color)
+      margin-right: 10px
+      font-size: 1.3rem
     &-old
+      font-size: 0.8rem
       background: linear-gradient(to left bottom, transparent 47.75%, currentColor 45.5%, currentColor 50.5%, transparent 55.25%)
 
+  &__description
+    margin-top: 10px
+    padding-bottom: 10px
+    @include border-inside
 
 
   &__footer
-    display: grid
+    display: flex
+    padding: 5px 0
 
-  &__attribute
+  &__atribute
+    flex-grow: 1
+    text-align: center
+    &:not(:first-child)
+      border-left: dotted 1px var(--color-text)
+
