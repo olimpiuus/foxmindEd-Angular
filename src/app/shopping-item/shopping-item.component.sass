@@ -9,7 +9,7 @@
   border-bottom: dotted 1px var(--color-text)
 
 .card
-  &_big
+  @mixin card
     --color-text:#6b6b6b
     color: var(--color-text)
     display: grid
@@ -17,14 +17,24 @@
     width: max(33%, 320px)
     padding: 5px
     border: 1px solid var(--main-color)
+  &_big
+    @include card
+
+  &_small
+    @include card
+    &>.card__top-group
+      display: grid
+      grid-template-columns: 55% 45%
   &__top-group
 
   &__img-wrapper
     position: relative
 
-
   &__img
     width: 100%
+    grid-row: 1/3
+    grid-column: 2
+
 
   &__sale-percent
     position: absolute
@@ -58,6 +68,69 @@
     padding-bottom: 10px
     @include border-inside
 
+  &__footer
+    display: flex
+    padding: 5px 0
+
+  &__atribute
+    flex-grow: 1
+    text-align: center
+    &:not(:first-child)
+      border-left: dotted 1px var(--color-text)
+
+// SMALL
+.card-small
+  --color-text:#6b6b6b
+  color: var(--color-text)
+  display: grid
+  justify-content: space-between
+  width: max(33%, 320px)
+  padding: 5px
+  border: 1px solid var(--main-color)
+
+  &__top-group
+    display: grid
+    grid-template-columns: 55% 45%
+    padding: 10px 0
+
+  &__img
+    width: 100%
+    grid-row: 1/3
+    grid-column: 2
+    align-self: center
+
+
+  &__sale-percent
+    border-radius: 100%
+    width: 40px
+    height: 40px
+    padding: 5px
+    text-align: center
+
+    color: white
+    background-color: var(--main-color)
+
+  &__price-and-shop
+    @include border-inside
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 5px
+  &__price
+    &-sale
+      color: var(--main-color)
+      margin-right: 10px
+      font-size: 1.3rem
+    &-old
+      font-size: 0.8rem
+      background: linear-gradient(to left bottom, transparent 47.75%, currentColor 45.5%, currentColor 50.5%, transparent 55.25%)
+
+  &__description
+    margin-top: 10px
+    padding-bottom: 10px
+    max-height: 80px
+    padding-right: 5px
+    overflow: hidden
 
   &__footer
     display: flex

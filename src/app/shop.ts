@@ -3,23 +3,23 @@ export interface IProduct {
   name: string;
   image: string;
   price: number;
-  shop:string;
-  salePercent:number;
+  shop: string;
+  salePercent: number;
   description: string;
-  attributes:string[];
+  attributes: string[];
 }
 
-export const products:IProduct[] = [
+export const products: IProduct[] = [
   {
     id: 1,
     name: 'Orange',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Oranges_-_whole-halved-segment.jpg/1200px-Oranges_-_whole-halved-segment.jpg',
+    image:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Oranges_-_whole-halved-segment.jpg/1200px-Oranges_-_whole-halved-segment.jpg',
     price: 50,
     shop: 'Amazon',
-    salePercent:45,
-    description: 'Tasty orange',
-    attributes: ['free delivery', 'new'],
+    salePercent: 45,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, maiores ad quae voluptates provident deserunt blanditiis impedit corrupti amet quasi ratione earum odit laborum accusantium praesentium ducimus cumque, qui enim!',
+    attributes: ['free delivery', 'new']
   }
 ];
-
-
