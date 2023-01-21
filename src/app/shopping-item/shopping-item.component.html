@@ -1,0 +1,28 @@
+
+<!-- Card big  -->
+
+<div class="card_big" [id]="product.id"
+  [ngClass]="{
+    'card_red' : product.salePercent>74,
+    'card_yellow': product.salePercent<50,
+    'card_orange' : product.salePercent>49&&product.salePercent<75
+  }"
+  >
+  <div class="card__top-group">
+    <div class="card__img-wrapper">
+      <img [src]="product.image" alt="" class="card__img">
+      <div class="card__sale-percent">{{product.salePercent}}% off</div>
+    </div>
+    <div class="card__price">
+      <span class="card__price-sale">{{product.price*product.salePercent/100|currency}}</span>
+      <span class="card__price-old">{{product.price|currency}}</span>
+      <div class="card__shop">{{product.shop}}</div>
+    </div>
+  </div>
+  <p class="card__description">{{product.description}}</p>
+  <ul class="card__footer">
+    <li *ngFor="let attribute of product.attributes; index as i;" class="card__atribute">{{attribute}}</li>
+  </ul>
+</div>
+
+
