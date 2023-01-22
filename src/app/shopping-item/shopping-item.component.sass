@@ -8,23 +8,19 @@
 @mixin border-inside
   border-bottom: dotted 1px var(--color-text)
 
-.card
-  @mixin card
+@mixin card
     --color-text:#6b6b6b
     color: var(--color-text)
     display: grid
     justify-content: space-between
-    width: max(33%, 320px)
+    height: 100%
+    // width: max(33%, 320px)
     padding: 5px
     border: 1px solid var(--main-color)
+
+.card
   &_big
     @include card
-
-  &_small
-    @include card
-    &>.card__top-group
-      display: grid
-      grid-template-columns: 55% 45%
   &__top-group
 
   &__img-wrapper
@@ -80,18 +76,12 @@
 
 // SMALL
 .card-small
-  --color-text:#6b6b6b
-  color: var(--color-text)
-  display: grid
-  justify-content: space-between
-  width: max(33%, 320px)
-  padding: 5px
-  border: 1px solid var(--main-color)
+  @include card
 
   &__top-group
     display: grid
     grid-template-columns: 55% 45%
-    padding: 10px 0
+    padding-bottom: 10px
 
   &__img
     width: 100%
@@ -128,7 +118,7 @@
   &__description
     margin-top: 10px
     padding-bottom: 10px
-    max-height: 80px
+    max-height: 50px
     padding-right: 5px
     overflow: hidden
 

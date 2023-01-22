@@ -1,5 +1,5 @@
 import { Input, Component } from '@angular/core';
-import { IProduct } from '../shop';
+import { IProduct, products as data } from '../shop';
 
 @Component({
   selector: 'app-main-page',
@@ -7,5 +7,6 @@ import { IProduct } from '../shop';
   styleUrls: ['./main-page.component.sass']
 })
 export class MainPageComponent {
-  @Input() products!: IProduct[];
+  products = data;
+  // @Input() products!: IProduct[];
 }

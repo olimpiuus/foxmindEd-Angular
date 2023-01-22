@@ -8,5 +8,4 @@ import { IProduct, products } from './shop';
 })
 export class AppComponent {
   title = 'angular';
-  products: IProduct[] = products;
 }

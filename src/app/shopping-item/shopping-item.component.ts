@@ -8,5 +8,5 @@ import { IProduct } from '../shop';
 })
 export class ShoppingItemComponent {
   @Input() product!: IProduct;
-  @Input() type!:'big'|'small'
+  @Input() type!: 'big' | 'small';
 }

@@ -2,7 +2,7 @@
 
 <li
   class="card_big"
-  *ngIf="type==='big'"
+  *ngIf="type === 'big'"
   [id]="product.id"
   [ngClass]="{
     card_red: product.salePercent > 74,
@@ -36,8 +36,8 @@
 <!-- Card small -->
 
 <li
-  class="card_small"
-  *ngIf="type==='small'"
+  class="card-small"
+  *ngIf="type === 'small'"
   [id]="product.id"
   [ngClass]="{
     card_red: product.salePercent > 74,
