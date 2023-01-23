@@ -1,18 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// components
+import { AppComponent } from './app.component';
 import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ContactComponent } from './contact/contact.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MapComponent } from './map/map.component';
 
 // Matherial Design 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatCardModule} from '@angular/material/card';
+
+// Map modules
+import { GoogleMapsModule } from '@angular/google-maps';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -20,10 +28,16 @@ import {MatCardModule} from '@angular/material/card';
     ShoppingItemComponent,
     MainPageComponent,
     NavBarComponent,
-    ContactComponent
+    ContactComponent,
+    MapComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, BrowserAnimationsModule,MatToolbarModule,MatCardModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, BrowserAnimationsModule,MatToolbarModule,MatCardModule, CommonModule,
+    GoogleMapsModule,
+    HttpClientModule,
+    HttpClientJsonpModule,],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [MapComponent]
+
 })
 export class AppModule {}
