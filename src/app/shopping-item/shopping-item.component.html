@@ -1,14 +1,13 @@
 <!-- Card big  -->
-<mat-card *ngIf="type === 'big'"
-[ngClass]="{
-  card_red: product.salePercent > 74,
-  card_yellow: product.salePercent < 50,
-  card_orange: product.salePercent > 49 && product.salePercent < 75
-}">
-  <li
-    class="card_big"
-    [id]="product.id"
-  >
+<mat-card
+  *ngIf="type === 'big'"
+  [ngClass]="{
+    card_red: product.salePercent > 74,
+    card_yellow: product.salePercent < 50,
+    card_orange: product.salePercent > 49 && product.salePercent < 75
+  }"
+>
+  <li class="card_big" [id]="product.id">
     <div class="card__top-group">
       <div class="card__img-wrapper">
         <img [src]="product.image" alt="" class="card__img" />
@@ -34,24 +33,21 @@
 </mat-card>
 
 <!-- Card small -->
-<mat-card *ngIf="type === 'small'"
-[ngClass]="{
-  card_red: product.salePercent > 74,
-  card_yellow: product.salePercent < 50,
-  card_orange: product.salePercent > 49 && product.salePercent < 75
-}">
-  <li
-    class="card-small"
-    
-    [id]="product.id"
-  
-  >
+<mat-card
+  *ngIf="type === 'small'"
+  [ngClass]="{
+    card_red: product.salePercent > 74,
+    card_yellow: product.salePercent < 50,
+    card_orange: product.salePercent > 49 && product.salePercent < 75
+  }"
+>
+  <li class="card-small" [id]="product.id">
     <div class="card-small__top-group">
       <div class="card-small__sale-percent">{{ product.salePercent }}% off</div>
       <img [src]="product.image" alt="" class="card-small__img" />
       <p class="card-small__description">{{ product.description }}</p>
     </div>
-  
+
     <div class="card-small__price-and-shop">
       <div class="card-small__prices">
         <span class="card-small__price-sale">{{
@@ -67,5 +63,4 @@
       </li>
     </ul>
   </li>
-
 </mat-card>
