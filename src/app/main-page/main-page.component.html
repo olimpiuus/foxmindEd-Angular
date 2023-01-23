@@ -1,7 +1,4 @@
 <ul class="shopping-list">
-  <app-shopping-item [product]="products[0]" [type]="'big'" class="big"></app-shopping-item>
-  <app-shopping-item [product]="products[1]" [type]="'small'"></app-shopping-item>
-  <app-shopping-item [product]="products[0]" [type]="'small'"></app-shopping-item>
-  <app-shopping-item [product]="products[0]" [type]="'small'"></app-shopping-item>
-  <app-shopping-item [product]="products[0]" [type]="'small'"></app-shopping-item>
+  <app-shopping-item  [product]="firstProduct" [type]="'big'" class="big"></app-shopping-item>
+  <app-shopping-item *ngFor="let product of restProducts" [product]="product" [type]="'small'" class="small"></app-shopping-item>
 </ul>
