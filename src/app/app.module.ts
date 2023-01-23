@@ -8,6 +8,11 @@ import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ContactComponent } from './contact/contact.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Matherial Design 
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,7 @@ import { ContactComponent } from './contact/contact.component';
     NavBarComponent,
     ContactComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, BrowserAnimationsModule,MatToolbarModule,MatCardModule],
   providers: [],
   bootstrap: [AppComponent]
 })
