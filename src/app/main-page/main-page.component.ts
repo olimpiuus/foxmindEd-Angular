@@ -7,18 +7,18 @@ import { IProduct, products as data } from '../shop';
   styleUrls: ['./main-page.component.sass']
 })
 export class MainPageComponent {
-  products:IProduct[] = data;
-  firstProduct = this.products[0]
-  arr = [...this.products]
+  products: IProduct[] = data;
+  firstProduct = this.products[0];
+  arr = [...this.products];
   restProducts: IProduct[] | undefined;
-  constructor(){
-    this.restProducts= this.getRestProducts()
+  constructor() {
+    this.restProducts = this.getRestProducts();
   }
-  getRestProducts(){
-    if(this.arr.length>0) {
-      this.arr.shift()
-      return [...this.arr]
+  getRestProducts() {
+    if (this.arr.length > 0) {
+      this.arr.shift();
+      return [...this.arr];
     }
-    return undefined
+    return undefined;
   }
 }
