@@ -1,30 +1,25 @@
 <!-- Card big  -->
-<mat-card
-  *ngIf="type === 'big'"
-  [ngClass]="{
-    card_red: product.salePercent > 74,
-    card_yellow: product.salePercent < 50,
-    card_orange: product.salePercent > 49 && product.salePercent < 75
-  }"
->
-  <li class="card_big" [id]="product.id">
-    <div class="card__top-group">
-      <div class="card__img-wrapper">
-        <img [src]="product.image" alt="" class="card__img" />
-        <div class="card__sale-percent card__sale-percent_big">{{ product.salePercent }}% off</div>
+<mat-card *ngIf="type === 'big'" [class]="class" class="big">
+  <li class="card-big" [id]="product.id">
+    <div class="card-big__top-group">
+      <div class="card-big__img-wrapper">
+        <img [src]="product.image" alt="" class="card-big__img" />
+        <div class="card-big__sale-percent card-big__sale-percent_big">
+          {{ product.salePercent }}% off
+        </div>
       </div>
-      <div class="card__price-and-shop">
-        <div class="card__prices">
-          <span class="card__price-sale">{{
+      <div class="card-big__price-and-shop">
+        <div class="card-big__prices">
+          <span class="card-big__price-sale">{{
             (product.price * product.salePercent) / 100 | currency
           }}</span>
-          <span class="card__price-old">{{ product.price | currency }}</span>
+          <span class="card-big__price-old">{{ product.price | currency }}</span>
         </div>
-        <div class="card__shop">{{ product.shop }}</div>
+        <div class="card-big__shop">{{ product.shop }}</div>
       </div>
     </div>
-    <p class="card__description">{{ product.description }}</p>
-    <ul class="card__footer">
+    <p class="card-big__description">{{ product.description }}</p>
+    <ul class="card-big__footer">
       <li *ngFor="let attribute of product.attributes; index as i" class="card__atribute">
         {{ attribute }}
       </li>
@@ -33,32 +28,25 @@
 </mat-card>
 
 <!-- Card small -->
-<mat-card
-  *ngIf="type === 'small'"
-  [ngClass]="{
-    card_red: product.salePercent > 74,
-    card_yellow: product.salePercent < 50,
-    card_orange: product.salePercent > 49 && product.salePercent < 75
-  }"
->
-  <li class="card-small" [id]="product.id">
-    <div class="card-small__top-group">
-      <div class="card-small__sale-percent">{{ product.salePercent }}% off</div>
-      <img [src]="product.image" alt="" class="card-small__img" />
-      <p class="card-small__description">{{ product.description }}</p>
+<mat-card *ngIf="type === 'small'" [class]="class">
+  <li class="card" [id]="product.id">
+    <div class="card__top-group">
+      <div class="card__sale-percent">{{ product.salePercent }}% off</div>
+      <img [src]="product.image" alt="" class="card__img" />
+      <p class="card__description">{{ product.description }}</p>
     </div>
 
-    <div class="card-small__price-and-shop">
-      <div class="card-small__prices">
-        <span class="card-small__price-sale">{{
+    <div class="card__price-and-shop">
+      <div class="card__prices">
+        <span class="card__price-sale">{{
           (product.price * product.salePercent) / 100 | currency
         }}</span>
-        <span class="card-small__price-old">{{ product.price | currency }}</span>
+        <span class="card__price-old">{{ product.price | currency }}</span>
       </div>
-      <div class="card-small__shop">{{ product.shop }}</div>
+      <div class="card__shop">{{ product.shop }}</div>
     </div>
-    <ul class="card-small__footer">
-      <li *ngFor="let attribute of product.attributes; index as i" class="card-small__atribute">
+    <ul class="card__footer">
+      <li *ngFor="let attribute of product.attributes; index as i" class="card__atribute">
         {{ attribute }}
       </li>
     </ul>

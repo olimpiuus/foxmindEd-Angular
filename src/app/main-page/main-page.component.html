@@ -1,9 +1,7 @@
 <ul class="shopping-list">
-  <app-shopping-item [product]="firstProduct" [type]="'big'" class="big"></app-shopping-item>
   <app-shopping-item
-    *ngFor="let product of restProducts"
+    *ngFor="let product of products; index as index"
     [product]="product"
-    [type]="'small'"
-    class="small"
+    [index]="index"
   ></app-shopping-item>
 </ul>

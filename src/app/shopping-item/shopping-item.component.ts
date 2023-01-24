@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { IProduct } from '../shop';
 
 @Component({
@@ -7,6 +7,23 @@ import { IProduct } from '../shop';
   styleUrls: ['./shopping-item.component.sass']
 })
 export class ShoppingItemComponent {
-  @Input() product!: IProduct;
-  @Input() type!: 'big' | 'small';
+  @Input() product: IProduct;
+  @Input() index: number;
+
+  public get type(): string {
+    return this.index ? 'small' : 'big';
+  }
+
+  public get class(): string {
+    if (this.product.salePercent > 74) {
+      return 'card_red';
+    } else if (this.product.salePercent < 50) {
+      return 'card_yellow';
+    }
+    return 'card_orange';
+  }
+
+  @HostBinding('class') get HeadingClass() {
+    return this.type;
+  }
 }

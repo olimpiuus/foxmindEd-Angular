@@ -44,7 +44,7 @@ export const products: IProduct[] = [
     salePercent: 60,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, maiores ad quae voluptates provident deserunt blanditiis impedit corrupti amet quasi ratione earum odit laborum accusantium praesentium ducimus cumque, qui enim!',
-    attributes: ['free delivery', 'new']
+    attributes: ['free delivery', 'new', 'HOT']
   },
   {
     id: 4,
@@ -56,7 +56,7 @@ export const products: IProduct[] = [
     salePercent: 50,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, maiores ad quae voluptates provident deserunt blanditiis impedit corrupti amet quasi ratione earum odit laborum accusantium praesentium ducimus cumque, qui enim!',
-    attributes: ['free delivery', 'new']
+    attributes: ['02:22', 'new']
   },
   {
     id: 5,
@@ -68,6 +68,6 @@ export const products: IProduct[] = [
     salePercent: 33,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, maiores ad quae voluptates provident deserunt blanditiis impedit corrupti amet quasi ratione earum odit laborum accusantium praesentium ducimus cumque, qui enim!',
-    attributes: ['free delivery', 'new']
+    attributes: ['new']
   }
 ];

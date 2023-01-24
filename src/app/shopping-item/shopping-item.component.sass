@@ -9,35 +9,17 @@
   border-bottom: dotted 1px var(--color-text)
 
 @mixin card
-    --color-text:#6b6b6b
-    color: var(--color-text)
-    display: grid
-    justify-content: space-between
-    height: 100%
-    padding: 5px
-    
-mat-card
-  border: 1px solid var(--main-color)
+  --color-text:#6b6b6b
+  color: var(--color-text)
+  display: grid
+  justify-content: space-between
   height: 100%
-
-  // card big==========
-.card
-  &_big
-    @include card
-  &__top-group
-
-  &__img-wrapper
-    position: relative
-
+  padding: 5px
   &__img
     width: 100%
     grid-row: 1/3
     grid-column: 2
-
-
   &__sale-percent
-    position: absolute
-    top: 0
     border-radius: 100%
     width: 45px
     height: 45px
@@ -46,7 +28,6 @@ mat-card
 
     color: white
     background-color: var(--main-color)
-
   &__price-and-shop
     @include border-inside
     display: flex
@@ -61,62 +42,47 @@ mat-card
     &-old
       font-size: 0.8rem
       background: linear-gradient(to left bottom, transparent 47.75%, currentColor 45.5%, currentColor 50.5%, transparent 55.25%)
-
-  &__description
-    margin-top: 10px
-    padding-bottom: 10px
-    @include border-inside
-
   &__footer
     display: flex
     padding: 5px 0
-
   &__atribute
     flex-grow: 1
     text-align: center
     &:not(:first-child)
       border-left: dotted 1px var(--color-text)
 
+mat-card
+  border: 1px solid var(--main-color)
+  height: 100%
+
+
+  // card big==========
+.card-big
+  @include card
+
+  &__img-wrapper
+    position: relative
+
+  &__sale-percent
+    position: absolute
+    top: 0
+
+  &__description
+    margin-top: 10px
+    padding-bottom: 10px
+    @include border-inside
+
+
 // SMALL======================
-.card-small
+.card
   @include card
 
   &__top-group
     display: grid
     grid-template-columns: 55% 45%
     padding-bottom: 10px
-
   &__img
-    width: 100%
-    grid-row: 1/3
-    grid-column: 2
     align-self: center
-
-
-  &__sale-percent
-    border-radius: 100%
-    width: 45px
-    height: 45px
-    padding: 5px
-    text-align: center
-
-    color: white
-    background-color: var(--main-color)
-
-  &__price-and-shop
-    @include border-inside
-    display: flex
-    justify-content: space-between
-    align-items: center
-    padding: 5px
-  &__price
-    &-sale
-      color: var(--main-color)
-      margin-right: 10px
-      font-size: 1.3rem
-    &-old
-      font-size: 0.8rem
-      background: linear-gradient(to left bottom, transparent 47.75%, currentColor 45.5%, currentColor 50.5%, transparent 55.25%)
 
   &__description
     margin-top: 10px
@@ -124,14 +90,3 @@ mat-card
     max-height: 80px
     padding-right: 5px
     overflow: hidden
-
-  &__footer
-    display: flex
-    padding: 5px 0
-
-  &__atribute
-    flex-grow: 1
-    text-align: center
-    &:not(:first-child)
-      border-left: dotted 1px var(--color-text)
-
