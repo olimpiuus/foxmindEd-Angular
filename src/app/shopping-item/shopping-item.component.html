@@ -3,15 +3,15 @@
   <li class="card-big" [id]="product.id">
     <div class="card-big__top-group">
       <div class="card-big__img-wrapper">
-        <img [src]="product.image" alt="" class="card-big__img" />
+        <img [src]="product.imgUrl" alt="" class="card-big__img" />
         <div class="card-big__sale-percent card-big__sale-percent_big">
-          {{ product.salePercent }}% off
+          {{ product.discount }}% off
         </div>
       </div>
       <div class="card-big__price-and-shop">
         <div class="card-big__prices">
           <span class="card-big__price-sale">{{
-            (product.price * product.salePercent) / 100 | currency
+            (product.price * product.discount) / 100 | currency
           }}</span>
           <span class="card-big__price-old">{{ product.price | currency }}</span>
         </div>
@@ -20,9 +20,9 @@
     </div>
     <p class="card-big__description">{{ product.description }}</p>
     <ul class="card-big__footer">
-      <li *ngFor="let attribute of product.attributes; index as i" class="card__atribute">
+      <!-- <li *ngFor="let attribute of product.attributes; index as i" class="card__atribute">
         {{ attribute }}
-      </li>
+      </li> -->
     </ul>
   </li>
 </mat-card>
@@ -31,24 +31,24 @@
 <mat-card *ngIf="type === 'small'" [class]="class">
   <li class="card" [id]="product.id">
     <div class="card__top-group">
-      <div class="card__sale-percent">{{ product.salePercent }}% off</div>
-      <img [src]="product.image" alt="" class="card__img" />
+      <div class="card__sale-percent">{{ product.discount }}% off</div>
+      <img [src]="product.imgUrl" alt="" class="card__img" />
       <p class="card__description">{{ product.description }}</p>
     </div>
 
     <div class="card__price-and-shop">
       <div class="card__prices">
         <span class="card__price-sale">{{
-          (product.price * product.salePercent) / 100 | currency
+          (product.price * product.discount) / 100 | currency
         }}</span>
         <span class="card__price-old">{{ product.price | currency }}</span>
       </div>
       <div class="card__shop">{{ product.shop }}</div>
     </div>
     <ul class="card__footer">
-      <li *ngFor="let attribute of product.attributes; index as i" class="card__atribute">
+      <!-- <li *ngFor="let attribute of product.attributes; index as i" class="card__atribute">
         {{ attribute }}
-      </li>
+      </li> -->
     </ul>
   </li>
 </mat-card>

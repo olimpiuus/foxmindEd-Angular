@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { DataFetchService } from './data-fetch.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
     HttpClientJsonpModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [DataFetchService],
   bootstrap: [AppComponent],
   exports: [MapComponent]
 })

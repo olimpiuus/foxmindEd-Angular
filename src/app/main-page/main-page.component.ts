@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IProduct, products as data } from '../shop';
+import { DataFetchService, IProduct } from '../data-fetch.service';
+
 
 @Component({
   selector: 'app-main-page',
@@ -7,5 +8,18 @@ import { IProduct, products as data } from '../shop';
   styleUrls: ['./main-page.component.sass']
 })
 export class MainPageComponent {
-  products: IProduct[] = data;
+  products: IProduct[]
+
+  constructor(
+    private requestService: DataFetchService
+  ){}
+
+  ngOnInit(){
+    this.requestService.getProducts().subscribe(response=>{
+      this.products=response
+    })
+    console.log(this.products);
+    
+  }
+  
 }
