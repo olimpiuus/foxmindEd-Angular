@@ -22,6 +22,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { DataFetchService } from './data-fetch.service';
+import { LimitCharactersPipe } from './limit-characters.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DataFetchService } from './data-fetch.service';
     MainPageComponent,
     NavBarComponent,
     ContactComponent,
-    MapComponent
+    MapComponent,
+    LimitCharactersPipe
   ],
   imports: [
     BrowserModule,

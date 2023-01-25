@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, QueryList, ViewChildren } from '@angular/core';
 import { DataFetchService, IProduct } from '../data-fetch.service';
+import { ShoppingItemComponent } from '../shopping-item/shopping-item.component';
 
 
 @Component({
@@ -9,17 +10,22 @@ import { DataFetchService, IProduct } from '../data-fetch.service';
 })
 export class MainPageComponent {
   products: IProduct[]
-
+  
   constructor(
     private requestService: DataFetchService
-  ){}
+    ){}
+    
+  @ViewChildren(ShoppingItemComponent)
+  primaryShoppingItem:QueryList<ShoppingItemComponent>
 
   ngOnInit(){
     this.requestService.getProducts().subscribe(response=>{
       this.products=response
     })
-    console.log(this.products);
-    
   }
+  ngAfterViewInit() {
+    console.log('Values on ngAfterViewInit():');
+    console.log("primaryColorSample:", this.primaryShoppingItem);
+  }  
   
 }
