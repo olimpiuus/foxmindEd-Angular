@@ -36,7 +36,6 @@ import { MainModule } from './main/main.module';
     NgbModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    
     CommonModule,
     GoogleMapsModule,
     HttpClientModule,

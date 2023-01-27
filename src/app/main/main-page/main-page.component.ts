@@ -19,9 +19,10 @@ export class MainPageComponent {
   primaryShoppingItem:QueryList<ShoppingItemComponent>
 
   ngOnInit(){
-    this.requestService.getProducts().subscribe(response=>{
-      this.products=response
-    })
+    this.requestService.getProductsArray().subscribe(response=>this.products=response)
+    
+    console.log(this.requestService.getProductById(1));
+    
   }
   ngAfterViewInit() {
     console.log('Values on ngAfterViewInit():');
