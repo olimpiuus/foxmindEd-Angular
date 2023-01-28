@@ -7,7 +7,7 @@ import { ShoppingItemDetailedComponent } from './main/shopping-item-detailed/sho
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'bikes', component: ShoppingItemDetailedComponent }
+  { path: 'bikes/:id', component: ShoppingItemDetailedComponent }
 ];
 
 @NgModule({

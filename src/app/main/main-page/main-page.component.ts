@@ -8,7 +8,9 @@ import { ShoppingItemComponent } from '../shopping-item/shopping-item.component'
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.sass']
 })
+
 export class MainPageComponent {
+  
   products: IProduct[]
   
   constructor(
@@ -20,13 +22,6 @@ export class MainPageComponent {
 
   ngOnInit(){
     this.requestService.getProductsArray().subscribe(response=>this.products=response)
-    
-    console.log(this.requestService.getProductById(1));
-    
   }
-  ngAfterViewInit() {
-    console.log('Values on ngAfterViewInit():');
-    console.log("primaryColorSample:", this.primaryShoppingItem);
-  }  
   
 }

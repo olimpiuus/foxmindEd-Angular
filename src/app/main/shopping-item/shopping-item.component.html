@@ -1,5 +1,5 @@
 <!-- Card big  -->
-<mat-card *ngIf="type === 'big'" [class]="class" class="big" [routerLink]="['/bikes']" [queryParams]="{id: product.id}" routerLinkActive="active">
+<mat-card *ngIf="type === 'big'" [class]="class" class="big" [routerLink]="['/bikes',product.id]" routerLinkActive="active">
   <li class="card-big" [id]="product.id">
     <div class="card-big__top-group">
       <div class="card-big__img-wrapper">
@@ -28,7 +28,7 @@
 </mat-card>
 
 <!-- Card small -->
-<mat-card *ngIf="type === 'small'" [class]="class" [routerLink]="['/bikes']" [queryParams]="{id: product.id}" routerLinkActive="active">
+<mat-card *ngIf="type === 'small'" [class]="class" [routerLink]="['/bikes',product.id]" routerLinkActive="active">
     <li class="card" [id]="product.id">
       <div class="card__top-group">
         <div class="card__sale-percent">{{ product.discount }}% off</div>

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, tap} from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Observable, map} from 'rxjs';
 
 interface IReview {
   author: string;
@@ -35,44 +34,14 @@ export class DataFetchService {
   productsUrl = '/assets/data/data.json'
   
   getProductsArray():Observable<IProduct[]>{ 
-    return this.http.get<IProduct[]>(this.productsUrl).pipe(
-      tap(_ => this.log('fetched heroes')),
-      catchError(this.handleError<IProduct[]>('getHeroes', []))
-    );
+    return this.http.get<IProduct[]>(this.productsUrl)
   }
+
   getProductById(id: number): Observable<IProduct> {
-    const url = `${this.productsUrl}/${id}`;
-    return this.http.get<IProduct>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<IProduct>(`getHero id=${id}`))
+    const url = `${this.productsUrl}`;
+    return this.http.get<IProduct[]>(url).pipe(
+      map( products => products.find(r => r.id === id)!)
     );
-  }
-  
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   *
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-  /** Log a HeroService message with the MessageService */
-  private log(message: string) {
-    // this.messageService.add(`HeroService: ${message}`);
   }
 
 }
