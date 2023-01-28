@@ -23,6 +23,7 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 //Pipes
 import { MainModule } from './main/main.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,7 @@ import { MainModule } from './main/main.module';
     HttpClientModule,
     HttpClientJsonpModule,
     MatIconModule,
-    MainModule,
+    MainModule
   ],
   bootstrap: [AppComponent],
   exports: [MapComponent]
