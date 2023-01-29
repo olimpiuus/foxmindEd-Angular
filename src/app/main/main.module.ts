@@ -6,18 +6,33 @@ import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
 import { LimitCharactersPipe } from './limit-characters.pipe';
 
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+
+import { ShoppingItemDetailedComponent } from './shopping-item-detailed/shopping-item-detailed.component';
+import { AppRoutingModule } from '../app-routing.module';
+
+import { StarRatingModule } from 'angular-star-rating';
+
 @NgModule({
   declarations: [
     MainPageComponent,
     ShoppingItemComponent,
-    LimitCharactersPipe
+    LimitCharactersPipe,
+    ShoppingItemDetailedComponent,
   ],
   imports: [
     CommonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatInputModule,
+    StarRatingModule.forRoot()
   ],
-  providers: [DataFetchService],
+  providers: [DataFetchService]
 })
-export class MainModule { }
+export class MainModule {}
