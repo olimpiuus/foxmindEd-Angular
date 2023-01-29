@@ -13,7 +13,6 @@ import { MatInputModule } from '@angular/material/input';
 
 import { ShoppingItemDetailedComponent } from './shopping-item-detailed/shopping-item-detailed.component';
 import { AppRoutingModule } from '../app-routing.module';
-import { RatingStarComponent } from './rating-star/rating-star.component';
 
 import { StarRatingModule } from 'angular-star-rating';
 
@@ -23,7 +22,6 @@ import { StarRatingModule } from 'angular-star-rating';
     ShoppingItemComponent,
     LimitCharactersPipe,
     ShoppingItemDetailedComponent,
-    RatingStarComponent
   ],
   imports: [
     CommonModule,

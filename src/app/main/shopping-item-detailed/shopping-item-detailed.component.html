@@ -6,37 +6,49 @@
   <div class="item__description">
     <h3 class="item__title">{{ product.name }}</h3>
     <p class="item__description">{{ product.description }}</p>
-    <div class="item__price">{{ product.price | currency }}</div>
-    <star-rating [starType]="'svg'" [rating]="rating" [readOnly]="true"></star-rating>
-    <div class="item__quantity-reviews"></div>
-    <div class="item__reviews-links">
-      <a href="" class="item__link-to-reviews"></a>
-      <a href="" class="item__add-review"></a>
+    <div class="item__price">{{ product.price*product.discount/100| currency : 'EUR'}}</div>
+    
+
+    <div class="item__stars-and-quantity">
+      <star-rating [starType]="'svg'" [rating]="rating" [readOnly]="true" class="item__stars"></star-rating>
+      <div class="item__quantity-reviews">({{ratingQuantity}})</div>
     </div>
+    
+    <div class="item__reviews-links">
+      <a class="item__link-to-reviews">Read {{ratingQuantity}} Reviews</a>
+      <a class="item__add-review">Write a Review</a>
+    </div>
+    
     <form action="" class="item__form">
-      <mat-form-field>
-        <mat-label>Color</mat-label>
-        <mat-select class="item__select">
+      <!-- <h3 class="item__select-title">Color</h3> -->
+
+      <mat-form-field  class="item__select">
+        <mat-label>Select Color</mat-label>
+        <mat-select  >
           <mat-option *ngFor="let color of product.color" [value]="color">{{ color }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Size</mat-label>
-        <mat-select class="item__select">
+
+      <!-- <h3 class="item__select-title">Size</h3> -->
+      <mat-form-field class="item__select">
+        <mat-label>Select Size</mat-label>
+        <mat-select >
           <mat-option *ngFor="let size of product.size" [value]="size">{{ size }}</mat-option>
         </mat-select>
       </mat-form-field>
+
       <p class="item__availabillity">Availabillity: Plese select options</p>
       <mat-form-field class="example-full-width">
         <mat-label>quantity</mat-label>
-        <input matInput #number value="1" />
+        <input matInput #number value="1"/>
       </mat-form-field>
-      <button mat-flat-button color="primary">
+
+      <button mat-flat-button color="primary" [disabled] = "checked? null : true" class="item__btn-add">
         <mat-icon>shopping_cart</mat-icon> Add to cart
       </button>
-      <button mat-flat-button><mat-icon>auto_fix_high</mat-icon>Add to Wish List</button>
+      <button mat-stroked-button color="" class="item__btn-wish"><mat-icon>auto_fix_high</mat-icon>Add to Wish List</button>
     </form>
-
-    <!-- </div> -->
   </div>
+    <!-- </div> -->
+
 </div>

@@ -17,7 +17,7 @@
       <div class="card-big__price-and-shop">
         <div class="card-big__prices">
           <span class="card-big__price-sale">{{
-            (product.price * product.discount) / 100 | currency : 'EUR'
+            product.price * product.discount / 100 | currency : 'EUR'
           }}</span>
           <span class="card-big__price-old">{{ product.price | currency : 'EUR' }}</span>
         </div>

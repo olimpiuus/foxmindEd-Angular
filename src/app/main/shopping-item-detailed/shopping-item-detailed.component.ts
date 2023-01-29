@@ -38,4 +38,13 @@ export class ShoppingItemDetailedComponent {
     const sum = arr.reduce((acc,el)=>(acc+=el),0)
     return sum/arr.length
   } 
+  public get ratingQuantity() {
+    return this.product.review.length
+  } 
+
+  public get checked() {
+    return true
+  }
+
+
 }
