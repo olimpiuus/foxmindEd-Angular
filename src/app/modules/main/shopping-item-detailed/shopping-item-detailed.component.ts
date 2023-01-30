@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DataFetchService, IProduct } from '../data-fetch.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-shopping-item-detailed',
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./shopping-item-detailed.component.sass']
 })
 export class ShoppingItemDetailedComponent {
-  sub: Observable<IProduct>;
+  sub: Subscription;
   id: number;
   product: IProduct;
 
@@ -24,13 +24,23 @@ export class ShoppingItemDetailedComponent {
   ngOnInit() {
     this.getProduct();
   }
-  getProduct() {
-    this._requestService.getProductById(this.id).subscribe((x) => (this.product = x!));
+  
+  ngOnDestroy() {
+    this.unsubscribe()
   }
 
   onBack(): void {
+    this.unsubscribe()
     this._router.navigate(['']);
   }
+
+  getProduct() {
+    this.sub = this._requestService.getProductById(this.id).subscribe((x) => (this.product = x!));
+  }
+  unsubscribe(){
+    this.sub.unsubscribe()
+  }
+  
   public get rating() {
     const arr = this.product.review.map(review=>{
       return review.rating
