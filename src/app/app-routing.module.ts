@@ -3,14 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './contact/contact.component';
 import { MainPageComponent } from './modules/main/main-page/main-page.component';
 import { ShoppingItemDetailedComponent } from './modules/main/shopping-item-detailed/shopping-item-detailed.component';
-import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'bikes/:id', component: ShoppingItemDetailedComponent },
-  { path: 'сart', component: CartComponent },
-
+  { path: 'checkout', loadChildren: () => import('./modules/checkout/checkout.module').then(m => m.CheckoutModule) }
 ];
 
 @NgModule({

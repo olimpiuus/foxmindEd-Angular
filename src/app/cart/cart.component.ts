@@ -6,8 +6,7 @@ import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.sass'],
-  
+  styleUrls: ['./cart.component.sass']
 })
 export class CartComponent {
   profileForm = this.fb.group({
@@ -19,12 +18,10 @@ export class CartComponent {
       state: [''],
       zip: ['']
     }),
-    aliases: this.fb.array([
-      this.fb.control('')
-    ])
+    aliases: this.fb.array([this.fb.control('')])
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   get aliases() {
     return this.profileForm.get('aliases') as FormArray;
@@ -33,7 +30,7 @@ export class CartComponent {
     this.aliases.push(this.fb.control(''));
   }
   onSubmit() {
-  // TODO: Use EventEmitter with form value
+    // TODO: Use EventEmitter with form value
     console.warn(this.profileForm.value);
   }
   updateProfile() {

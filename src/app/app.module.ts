@@ -24,8 +24,12 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 //Pipes
 import { MainModule } from './modules/main/main.module';
 
-//Forms 
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+//Forms
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +53,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MainModule,
     FormsModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
+    
   ],
   bootstrap: [AppComponent],
   exports: [MapComponent]

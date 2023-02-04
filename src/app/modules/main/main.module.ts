@@ -21,7 +21,7 @@ import { StarRatingModule } from 'angular-star-rating';
     MainPageComponent,
     ShoppingItemComponent,
     LimitCharactersPipe,
-    ShoppingItemDetailedComponent,
+    ShoppingItemDetailedComponent
   ],
   imports: [
     CommonModule,
