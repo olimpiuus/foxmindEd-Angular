@@ -10,22 +10,18 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo:'order-list'
-      },
-      {
-        path: 'account',
-        loadChildren: () => import('./account/account.module').then((m) => m.AccountModule)
+        redirectTo:'address'
       },
       {
         path: 'payment',
         loadChildren: () => import('./payment/payment.module').then((m) => m.PaymentModule)
       },
-      { path: 'order-list', loadChildren: () => import('./order-list/order-list.module').then(m => m.OrderListModule) }
+      { path: 'order-list', loadChildren: () => import('./order-list/order-list.module').then(m => m.OrderListModule) },
+      { path: 'address', loadChildren: () => import('./address/address.module').then(m => m.AddressModule) },
+      { path: 'date-delivery', loadChildren: () => import('./date-delicery/date-delicery.module').then(m => m.DateDeliceryModule) },
+      { path: 'summarize', loadChildren: () => import('./summarize/summarize.module').then(m => m.SummarizeModule) },
     ]
   },
-  { path: 'address', loadChildren: () => import('./address/address.module').then(m => m.AddressModule) },
-  { path: 'date-delivery', loadChildren: () => import('./date-delicery/date-delicery.module').then(m => m.DateDeliceryModule) },
-  { path: 'summarize', loadChildren: () => import('./summarize/summarize.module').then(m => m.SummarizeModule) },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

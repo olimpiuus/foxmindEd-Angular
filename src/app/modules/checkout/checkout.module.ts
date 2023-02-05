@@ -5,13 +5,13 @@ import { CheckoutRoutingModule } from './checkout-routing.module';
 import { CheckoutComponent } from './checkout.component';
 import { RouterModule } from '@angular/router';
 
+
 @NgModule({
   declarations: [CheckoutComponent],
   imports: [
     CommonModule,
     CheckoutRoutingModule,
-    RouterModule
-    // CommonModule,
+    RouterModule,
   ]
 })
 export class CheckoutModule {}

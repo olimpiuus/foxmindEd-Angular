@@ -1,1 +1,14 @@
 <p>order-list works!</p>
+
+<mat-selection-list #shoes [formGroup]="form">
+  <mat-list-option *ngFor="let item of list" selected style="height: 100px;" [value]="item" formControlName="item1">
+    <p>{{item.name}}</p>
+    <p>{{item.description}}</p>
+
+  </mat-list-option>
+  
+</mat-selection-list>
+
+<p>
+  Options selected: {{shoes.selectedOptions.selected.length}}
+</p>

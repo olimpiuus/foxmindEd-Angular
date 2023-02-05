@@ -1,1 +1,8 @@
-<p>address works!</p>
+<form [formGroup]="form">
+  <mat-form-field *ngFor="let control of controls" appearance="fill" [formControlName]="control[0]">
+    <mat-label>{{control[0]}}</mat-label>
+    <input matInput>
+
+  </mat-form-field>
+</form>
+
