@@ -29,7 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { CheckoutModule } from './modules/checkout/checkout.module';
+
 
 @NgModule({
   declarations: [AppComponent, NavBarComponent, ContactComponent, MapComponent, CartComponent],
@@ -50,7 +50,6 @@ import { CheckoutModule } from './modules/checkout/checkout.module';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule
-    // CheckoutModule
   ],
   bootstrap: [AppComponent],
   exports: [MapComponent]

@@ -1,8 +1,17 @@
-<form [formGroup]="form">
-  <mat-form-field *ngFor="let control of controls" appearance="fill" [formControlName]="control[0]">
-    <mat-label>{{control[0]}}</mat-label>
-    <input matInput>
-
+<h2>Personal Inpormation</h2>
+<form [formGroup]="formPersonal">
+  <mat-form-field *ngFor="let control of controlsPersonal" appearance="fill" style="margin: 5px;">
+    <mat-label>{{control}}</mat-label>
+    <input [formControlName]="control"  matInput>
   </mat-form-field>
 </form>
+
+<h2>Address</h2>
+<form [formGroup]="formAddress">
+  <mat-form-field *ngFor="let control of controlsAddress" appearance="fill" style="margin: 5px;">
+    <mat-label>{{control}}</mat-label>
+    <input [formControlName]="control"  matInput>
+  </mat-form-field>
+</form>
+
 

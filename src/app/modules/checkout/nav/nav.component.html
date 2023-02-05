@@ -1,0 +1,8 @@
+<p>nav works!</p>
+<!-- <mat-toolbar color="primary"> -->
+  <ul class="nav__list">
+    <div class="nav__container">
+      <li *ngFor="let group of formGroups" class="nav__link-item" [routerLink]="group">{{group}}</li>
+    </div>
+  </ul>
+<!-- </mat-toolbar> -->

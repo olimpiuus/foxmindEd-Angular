@@ -8,7 +8,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
-    AddressComponent
+    AddressComponent,
   ],
   imports: [
     CommonModule,
@@ -16,7 +16,8 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    
   ]
 })
 export class AddressModule { }

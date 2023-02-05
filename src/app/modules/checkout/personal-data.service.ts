@@ -1,24 +1,22 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
-import { IProduct } from '../main/data-fetch.service';
+import { CheckoutModule } from './checkout.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
+
 export class PersonalDataService {
   items: any;
 
   constructor(private fb: FormBuilder) { 
   }
 
-  products = [{name:'name1', description:'asdfasdffasd'},{name:'name2', description:'asdfasdffasd'},{name:'name3', description:'asdfasdffasd'}]
+
   profileForm = this.fb.group({ 
-    items: this.fb.group({
-      item1:[''],
-      item2:[''],
-    }),
+    items:[[{name:'name1', description:'asdfasdffasd'},{name:'name2', description:'asdfasdffasd'},{name:'name3', description:'asdfasdffasd'}],[Validators.required]],
     personalInfo:this.fb.group({
-      name:[''],
+      name: new FormControl(['']),
       middleName:[''],
       lastName:[''],
       email:['',Validators.email],
@@ -40,8 +38,5 @@ export class PersonalDataService {
 
   getForm(){
     return this.profileForm
-  }
-  getItems(){
-    return this.products
   }
 }
