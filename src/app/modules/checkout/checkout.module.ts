@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { CheckoutRoutingModule } from './checkout-routing.module';
 import { CheckoutComponent } from './checkout.component';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [
-    CheckoutComponent
-  ],
+  declarations: [CheckoutComponent],
   imports: [
     CommonModule,
-    CheckoutRoutingModule
+    CheckoutRoutingModule,
+    RouterModule
+    // CommonModule,
   ]
 })
-export class CheckoutModule { }
+export class CheckoutModule {}

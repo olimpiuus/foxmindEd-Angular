@@ -5,15 +5,8 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
-  declarations: [
-    AccountComponent
-  ],
-  imports: [
-    CommonModule,
-    AccountRoutingModule,
-    ReactiveFormsModule
-  ]
+  declarations: [AccountComponent],
+  imports: [CommonModule, AccountRoutingModule, ReactiveFormsModule]
 })
-export class AccountModule { }
+export class AccountModule {}

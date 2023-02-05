@@ -5,9 +5,9 @@ import { FormGroup } from '@angular/forms';
   selector: 'app-account',
   template: `
     <form [formGroup]="form">
-      <input formControlName="name">
-      <input formControlName="email">
-      
+      <input formControlName="name" />
+      <input formControlName="email" />
+
       <button [disabled]="form.invalid">Next</button>
     </form>
   `,
@@ -15,5 +15,5 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./account.component.sass']
 })
 export class AccountComponent {
-  @Input() form:FormGroup
+  @Input() form: FormGroup;
 }
