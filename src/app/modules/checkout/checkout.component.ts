@@ -9,7 +9,10 @@ export abstract class FormProvider {
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.sass']
+  styleUrls: ['./checkout.component.sass'],
+  host: {
+    class:'checkout'
+}
 })
 export class CheckoutComponent {
   form: FormGroup<any>;

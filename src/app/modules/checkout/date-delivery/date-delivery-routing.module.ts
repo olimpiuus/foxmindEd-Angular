@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DateDeliceryComponent } from './date-delicery.component';
+import { DateDeliveryComponent } from './date-delivery.component';
 
-const routes: Routes = [{ path: '', component: DateDeliceryComponent }];
+const routes: Routes = [{ path: '', component: DateDeliveryComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DateDeliceryRoutingModule { }
+export class DateDeliveryRoutingModule { }

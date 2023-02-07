@@ -8,13 +8,5 @@ import { PersonalDataService } from '../personal-data.service';
   styleUrls: ['./nav.component.sass']
 })
 export class NavComponent {
-  form: FormGroup<any>;
-  formGroups: any;
-
-  constructor(private _form: PersonalDataService){  }
-
-  ngOnInit(){
-    this.form = this._form.getForm() as FormGroup;
-    this.formGroups = Object.keys( this.form.controls)
-  }
+  constructor(public form: PersonalDataService){ }
 }

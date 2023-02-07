@@ -1,1 +1,17 @@
-<p>payment works!</p>
+
+<form action="" [formGroup]="form"> 
+  <mat-form-field appearance="fill">
+    <mat-label>Choose an payment method</mat-label>
+    <mat-select formControlName="type">
+      <mat-option value="paypal">PayPal</mat-option>
+      <mat-option value="creditCard">Credit Card</mat-option>
+      <mat-option value="cash">Cash</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="check">
+    <mat-label>Account number</mat-label>
+    <input formControlName="details" matInput  type="text">
+  </mat-form-field>
+
+</form>

@@ -1,0 +1,4 @@
+<div class="buttons-container" *ngIf="activeFormRoute">
+  <button mat-raised-button [routerLink]="previousPage">Back</button>
+  <button mat-raised-button color="primary" [disabled]="validBtnNext" [routerLink]="nextPage">{{btnNextText}}</button>
+</div>
