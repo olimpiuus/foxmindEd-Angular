@@ -1,1 +1,27 @@
-<p>date-delivery works!</p>
+<label id="example-radio-group-label">Pick your delivery date </label>
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group"
+  [formControl]="dateDelivery">
+  <mat-radio-button class="example-radio-button" value="Today">
+    Today
+  </mat-radio-button>
+
+  <mat-radio-button class="example-radio-button" value="Tomorow">
+    Tomorow
+  </mat-radio-button>
+  
+  <mat-radio-button (change)="log()" #customDate class="example-radio-button" value="custom" >
+    Custom
+  </mat-radio-button>
+
+  <mat-form-field *ngIf="dateDelivery.value==='custom'" appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" [formControl]="dateDelivery">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+</mat-radio-group>
+<div>Your chosen delivery date is: {{dateDelivery.value}}</div>

@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { CheckoutModule } from './checkout.module';
 
+export function noCustomValue(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+
+    return control.value==='custom' ? {noCustomValue: {value: control.value}} : null;
+  };
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -33,7 +39,7 @@ export class PersonalDataService {
       type:['', Validators.required],
       details:['', Validators.required]
     }),
-    dateOfDelivery: [''],
+    dateOfDelivery: ['', [Validators.required, noCustomValue()]],
     
   })
 

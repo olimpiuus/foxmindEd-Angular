@@ -1,8 +1,8 @@
 <h2>Personal Information</h2>
 <form [formGroup]="formPersonal">
-  <mat-form-field *ngFor="let control of controlsPersonal" appearance="fill" style="margin: 5px;">
-    <mat-label>{{control}}</mat-label>
-    <input [formControlName]="control"  matInput>
+  <mat-form-field *ngFor="let control of controlsPersonal"  appearance="fill"  style="margin: 5px;">
+    <mat-label #name >{{control}}</mat-label>
+    <input [formControlName]="control" [type]="typeInputCorrection(name.textContent!)" matInput>
   </mat-form-field>
 </form>
 

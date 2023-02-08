@@ -23,5 +23,10 @@ export class AddressComponent {
     this.formPersonal = this._form.getForm().get('personalInfo')! as FormGroup;
     this.controlsPersonal=Object.keys(this.formPersonal.controls)
   }
+  typeInputCorrection(name:string){
+    if (name ==='email') {return 'email'}
+    if (name ==='phone') {return 'tel'}
+    return 'text'
+  }
 
 }
