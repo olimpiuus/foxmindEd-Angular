@@ -1,10 +1,13 @@
-<mat-toolbar class="form-nav " color="secondary">
-
-    <ul class="nav__list nav__container">
-      <li class="nav__link-item" routerLink="order-list">List Items</li>
-      <li class="nav__link-item" routerLink="address" [ngClass]="form.addressClass">Adress and Info</li>
-      <li class="nav__link-item" routerLink="payment" [ngClass]="form.paymentClass">Payment</li>
-      <li class="nav__link-item" routerLink="date-delivery" [ngClass]="form.deliveryDateClass">Delivery Date</li>
-      <li class="nav__link-item" routerLink="summarize" [ngClass]="">Summarize</li>
-    </ul>
+<mat-toolbar class="form-nav" color="secondary">
+  <ul class="nav__list nav__container" #list>
+    <li class="nav__link-item" routerLink="order-list" [ngClass]="form.itemsListClass">List Items</li>
+    <li class="nav__link-item disabled" routerLink="address" [ngClass]="form.addressClass">
+      Address and Info
+    </li>
+    <li class="nav__link-item disabled" routerLink="payment" [ngClass]="form.paymentClass">Payment</li>
+    <li class="nav__link-item disabled" routerLink="date-delivery" [ngClass]="form.deliveryDateClass">
+      Delivery Date
+    </li>
+    <li class="nav__link-item disabled" routerLink="summarize" [ngClass]="">Summarize</li>
+  </ul>
 </mat-toolbar>

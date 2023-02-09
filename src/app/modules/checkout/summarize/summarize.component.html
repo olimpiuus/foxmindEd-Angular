@@ -1,1 +1,4 @@
-<p>summarize works!</p>
+<div *ngFor="let form of formValues" class="info">
+  <h3 class="title">{{form[0]}}</h3>
+  <p class="infoValues">{{form[1]!|JSONStr}}</p>
+</div>

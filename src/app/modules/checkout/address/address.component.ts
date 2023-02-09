@@ -15,18 +15,21 @@ export class AddressComponent {
   formPersonal: FormGroup;
   controlsPersonal: string[];
 
-  constructor(private _form: PersonalDataService){  }
-  ngOnInit(){
+  constructor(private _form: PersonalDataService) {}
+  ngOnInit() {
     this.formAddress = this._form.getForm().get('address')! as FormGroup;
-    this.controlsAddress=Object.keys(this.formAddress.controls)
+    this.controlsAddress = Object.keys(this.formAddress.controls);
 
     this.formPersonal = this._form.getForm().get('personalInfo')! as FormGroup;
-    this.controlsPersonal=Object.keys(this.formPersonal.controls)
+    this.controlsPersonal = Object.keys(this.formPersonal.controls);
   }
-  typeInputCorrection(name:string){
-    if (name ==='email') {return 'email'}
-    if (name ==='phone') {return 'tel'}
-    return 'text'
+  typeInputCorrection(name: string) {
+    if (name === 'email') {
+      return 'email';
+    }
+    if (name === 'phone') {
+      return 'tel';
+    }
+    return 'text';
   }
-
 }

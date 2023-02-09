@@ -30,7 +30,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @NgModule({
   declarations: [AppComponent, NavBarComponent, ContactComponent, MapComponent, CartComponent],
   imports: [
@@ -44,7 +43,6 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     HttpClientJsonpModule,
     MatIconModule,
-    MainModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
