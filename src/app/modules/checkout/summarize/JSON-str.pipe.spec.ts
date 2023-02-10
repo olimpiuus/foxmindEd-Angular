@@ -1,4 +1,4 @@
-import { JSONStrPipe } from './JSON-str';
+import { JSONStrPipe } from './JSON-str.pipe';
 
 describe('JSONStrPipe', () => {
   it('create an instance', () => {

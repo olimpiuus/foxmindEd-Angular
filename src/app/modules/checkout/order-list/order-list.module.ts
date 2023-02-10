@@ -5,10 +5,11 @@ import { OrderListRoutingModule } from './order-list-routing.module';
 import { OrderListComponent } from './order-list.component';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LimitCharactersPipe } from '../../main/limit-characters.pipe';
+import { LimitCharactersPipe } from './limit-characters.pipe';
+
 
 @NgModule({
-  declarations: [OrderListComponent,LimitCharactersPipe],
+  declarations: [OrderListComponent, LimitCharactersPipe],
   imports: [CommonModule, OrderListRoutingModule, MatListModule, ReactiveFormsModule, FormsModule]
 })
 export class OrderListModule {}

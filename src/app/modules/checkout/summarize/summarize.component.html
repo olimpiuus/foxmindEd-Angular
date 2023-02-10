@@ -1,4 +1,6 @@
-<div *ngFor="let form of formValues" class="info">
-  <h3 class="title">{{form[0]}}</h3>
-  <p class="infoValues">{{form[1]!|JSONStr}}</p>
-</div>
+<mat-list>
+  <mat-list-item *ngFor="let form of formValues" >
+    <span matListItemTitle>{{form[0]|titleForm}}</span>
+    <span matListItemLine>{{form[1]!|JSONStr}}</span>
+  </mat-list-item>
+</mat-list>
