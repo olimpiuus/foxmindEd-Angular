@@ -12,7 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 
 import { ShoppingItemDetailedComponent } from './shopping-item-detailed/shopping-item-detailed.component';
-import { AppRoutingModule } from '../app-routing.module';
+import { AppRoutingModule } from '../../app-routing.module';
 
 import { StarRatingModule } from 'angular-star-rating';
 

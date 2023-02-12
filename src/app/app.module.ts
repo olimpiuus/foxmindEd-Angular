@@ -21,7 +21,7 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 // Services
 
 //Pipes
-import { MainModule } from './main/main.module';
+import { MainModule } from './modules/main/main.module';
 
 
 @NgModule({
