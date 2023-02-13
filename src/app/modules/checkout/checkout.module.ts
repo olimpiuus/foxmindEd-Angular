@@ -11,7 +11,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ButtonsNavigationComponent } from './buttons-navigation/buttons-navigation.component';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @NgModule({
   declarations: [CheckoutComponent, NavComponent, ButtonsNavigationComponent],
   imports: [

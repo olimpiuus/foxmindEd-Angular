@@ -30,8 +30,11 @@ export class ButtonsNavigationComponent {
     if (this.activeFormRoute === 'summarize') {
       return false;
     }
-    if (this.activeFormRoute==='address') {
-      return (this.activeForm.status ==='INVALID'|| this.form.getForm().get('personalInfo')!.status==='INVALID') ? true:false
+    if (this.activeFormRoute === 'address') {
+      return this.activeForm.status === 'INVALID' ||
+        this.form.getForm().get('personalInfo')!.status === 'INVALID'
+        ? true
+        : false;
     }
     return this.activeForm.status === 'VALID' ? false : true;
   }

@@ -15,10 +15,10 @@ export class OrderListComponent {
     this.items = this._form.cart;
   }
   ngOnInit() {
-    this.form.setValue(this.items.map(item=>item.name))
+    this.form.setValue(this.items.map((item) => item.name));
   }
 
-  log(){
-    console.log(this.form)
+  log() {
+    console.log(this.form);
   }
 }

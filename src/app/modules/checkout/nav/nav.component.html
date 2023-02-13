@@ -1,11 +1,20 @@
 <mat-toolbar class="form-nav" color="secondary">
   <ul class="nav__list nav__container" #list>
-    <li class="nav__link-item" routerLink="order-list" [ngClass]="form.itemsListClass">List Items</li>
-    <li class="nav__link-item disabled" routerLink="address" [ngClass]="form.addressClass">
+    <li class="nav__link-item" #nav1 routerLink="order-list" [ngClass]="form.itemsListClass">
+      List Items 
+    </li>
+    <li class="nav__link-item  disabled" #nav2  routerLink="address" [ngClass]="!nav2.classList.contains('disabled')?form.addressClass:''">
       Address and Info
     </li>
-    <li class="nav__link-item disabled" routerLink="payment" [ngClass]="form.paymentClass">Payment</li>
-    <li class="nav__link-item disabled" routerLink="date-delivery" [ngClass]="form.deliveryDateClass">
+    <li class="nav__link-item disabled" #nav3 routerLink="payment" [ngClass]="!nav3.classList.contains('disabled')?form.paymentClass:''">
+      Payment
+    </li>
+    <li
+      class="nav__link-item disabled"
+      #nav4
+      routerLink="date-delivery"
+      [ngClass]="!nav4.classList.contains('disabled')?form.deliveryDateClass:''"
+      >
       Delivery Date
     </li>
     <li class="nav__link-item disabled" routerLink="summarize" [ngClass]="">Summarize</li>

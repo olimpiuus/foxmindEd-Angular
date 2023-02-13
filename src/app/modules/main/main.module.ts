@@ -16,7 +16,6 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { StarRatingModule } from 'angular-star-rating';
 import { LimitCharactersPipe } from './limit-characters.pipe';
 
-
 @NgModule({
   declarations: [
     MainPageComponent,

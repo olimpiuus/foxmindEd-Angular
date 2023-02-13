@@ -7,7 +7,6 @@ import { MatListModule } from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LimitCharactersPipe } from './limit-characters.pipe';
 
-
 @NgModule({
   declarations: [OrderListComponent, LimitCharactersPipe],
   imports: [CommonModule, OrderListRoutingModule, MatListModule, ReactiveFormsModule, FormsModule]
