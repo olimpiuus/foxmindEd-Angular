@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ContactComponent } from './contact/contact.component';
 import { MapComponent } from './map/map.component';
-import { CartComponent } from './cart/cart.component';
 
 // Matherial Design
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,9 +28,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent, ContactComponent, MapComponent, CartComponent],
+  declarations: [AppComponent, NavBarComponent, ContactComponent, MapComponent, ContactFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
