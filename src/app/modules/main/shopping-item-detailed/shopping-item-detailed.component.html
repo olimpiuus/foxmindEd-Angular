@@ -9,12 +9,7 @@
     <div class="item__price">{{ (product.price * product.discount) / 100 | currency : 'EUR' }}</div>
 
     <div class="item__stars-and-quantity">
-      <star-rating
-        [starType]="'svg'"
-        [rating]="rating"
-        [readOnly]="true"
-        class="item__stars"
-      ></star-rating>
+      <star-rating [starType]="'svg'" [rating]="rating" [readOnly]="true" class="item__stars" ></star-rating>
       <div class="item__quantity-reviews">({{ ratingQuantity }})</div>
     </div>
 
@@ -24,7 +19,6 @@
     </div>
 
     <form action="" class="item__form">
-      <!-- <h3 class="item__select-title">Color</h3> -->
 
       <mat-form-field class="item__select">
         <mat-label>Select Color</mat-label>
@@ -33,7 +27,6 @@
         </mat-select>
       </mat-form-field>
 
-      <!-- <h3 class="item__select-title">Size</h3> -->
       <mat-form-field class="item__select">
         <mat-label>Select Size</mat-label>
         <mat-select>
@@ -60,5 +53,4 @@
       </button>
     </form>
   </div>
-  <!-- </div> -->
 </div>

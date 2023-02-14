@@ -14,5 +14,11 @@ export class ContactFormComponent {
   
   onSubmit(form: NgForm) {
     console.log(form.value);
+    form.resetForm({
+      name: '',
+      surname: '',
+      email: '',
+      description: ''
+    });
   }
 }

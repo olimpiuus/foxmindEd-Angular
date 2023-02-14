@@ -5,7 +5,7 @@ import { DataFetchService } from './data-fetch.service';
 import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
 
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -14,6 +14,7 @@ import { ShoppingItemDetailedComponent } from './shopping-item-detailed/shopping
 import { AppRoutingModule } from '../../app-routing.module';
 
 import { StarRatingModule } from 'angular-star-rating';
+
 import { LimitCharactersPipe } from './limit-characters.pipe';
 
 @NgModule({

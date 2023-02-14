@@ -44,6 +44,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     HttpClientJsonpModule,
     MatIconModule,
     FormsModule,
+    MainModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
