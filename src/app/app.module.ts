@@ -23,14 +23,15 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 //Pipes
 import { MainModule } from './modules/main/main.module';
 
+//Forms
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavBarComponent,
-    ContactComponent,
-    MapComponent,
-  ],
+  declarations: [AppComponent, NavBarComponent, ContactComponent, MapComponent, ContactFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,7 +43,12 @@ import { MainModule } from './modules/main/main.module';
     HttpClientModule,
     HttpClientJsonpModule,
     MatIconModule,
-    MainModule
+    FormsModule,
+    MainModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   bootstrap: [AppComponent],
   exports: [MapComponent]

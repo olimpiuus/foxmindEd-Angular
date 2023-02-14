@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DataFetchService, IProduct } from '../data-fetch.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-item-detailed',
@@ -24,37 +24,35 @@ export class ShoppingItemDetailedComponent {
   ngOnInit() {
     this.getProduct();
   }
-  
+
   ngOnDestroy() {
-    this.unsubscribe()
+    this.unsubscribe();
   }
 
   onBack(): void {
-    this.unsubscribe()
+    this.unsubscribe();
     this._router.navigate(['']);
   }
 
   getProduct() {
     this.sub = this._requestService.getProductById(this.id).subscribe((x) => (this.product = x!));
   }
-  unsubscribe(){
-    this.sub.unsubscribe()
+  unsubscribe() {
+    this.sub.unsubscribe();
   }
-  
+
   public get rating() {
-    const arr = this.product.review.map(review=>{
-      return review.rating
-    })
-    const sum = arr.reduce((acc,el)=>(acc+=el),0)
-    return sum/arr.length
-  } 
+    const arr = this.product.review.map((review) => {
+      return review.rating;
+    });
+    const sum = arr.reduce((acc, el) => (acc += el), 0);
+    return sum / arr.length;
+  }
   public get ratingQuantity() {
-    return this.product.review.length
-  } 
+    return this.product.review.length;
+  }
 
   public get checked() {
-    return true
+    return true;
   }
-
-
 }

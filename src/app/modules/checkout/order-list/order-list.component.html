@@ -1,0 +1,8 @@
+<mat-selection-list #shoes [formControl]="form" (selectionChange)="log()">
+  <mat-list-option *ngFor="let item of items" selected style="height: 100px" [value]="item.name">
+    <p>{{ item.name }}</p>
+    <p>{{ item.description | limitCharacters }}</p>
+  </mat-list-option>
+</mat-selection-list>
+
+<p>Options selected: {{ shoes.selectedOptions.selected.length }}</p>

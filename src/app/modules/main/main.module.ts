@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MainPageComponent } from './main-page/main-page.component';
 import { DataFetchService } from './data-fetch.service';
 import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
-import { LimitCharactersPipe } from './limit-characters.pipe';
 
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -16,12 +15,14 @@ import { AppRoutingModule } from '../../app-routing.module';
 
 import { StarRatingModule } from 'angular-star-rating';
 
+import { LimitCharactersPipe } from './limit-characters.pipe';
+
 @NgModule({
   declarations: [
     MainPageComponent,
     ShoppingItemComponent,
-    LimitCharactersPipe,
     ShoppingItemDetailedComponent,
+    LimitCharactersPipe
   ],
   imports: [
     CommonModule,
