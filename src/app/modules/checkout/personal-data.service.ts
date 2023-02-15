@@ -19,7 +19,12 @@ export function noCustomValue(): ValidatorFn {
   providedIn: 'root'
 })
 export class PersonalDataService {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
+    // this.cart.forEach(item=>{
+    //   this.profileForm.controls.items.addControl(item.name,this.fb.control(''))
+    // })
+   
+  }
 
   cart = [
     {
@@ -29,14 +34,14 @@ export class PersonalDataService {
         'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
     },
     {
-      id: 1,
-      name: 'Argon 18',
+      id: 2,
+      name: 'Bike 22',
       description:
         'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
     },
     {
-      id: 1,
-      name: 'Argon 18',
+      id: 3,
+      name: 'Bike 12',
       description:
         'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
     }
@@ -44,6 +49,7 @@ export class PersonalDataService {
 
   profileForm = this.fb.group({
     items: ['', [Validators.required]],
+    // items: this.fb.group({}),
     personalInfo: this.fb.group({
       name: ['', Validators.required],
       middleName: [''],

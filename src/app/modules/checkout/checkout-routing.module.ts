@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddressComponent } from './address/address.component';
 import { CheckoutComponent } from './checkout.component';
+import { DateDeliveryComponent } from './date-delivery/date-delivery.component';
+import { OrderListComponent } from './order-list/order-list.component';
+import { PaymentComponent } from './payment/payment.component';
+import { SummarizeComponent } from './summarize/summarize.component';
 
 const routes: Routes = [
   {
@@ -14,24 +19,23 @@ const routes: Routes = [
       },
       {
         path: 'payment',
-        loadChildren: () => import('./payment/payment.module').then((m) => m.PaymentModule)
+        component: PaymentComponent
       },
       {
         path: 'order-list',
-        loadChildren: () => import('./order-list/order-list.module').then((m) => m.OrderListModule)
+        component: OrderListComponent
       },
       {
         path: 'address',
-        loadChildren: () => import('./address/address.module').then((m) => m.AddressModule)
+        component: AddressComponent
       },
       {
         path: 'date-delivery',
-        loadChildren: () =>
-          import('./date-delivery/date-delivery.module').then((m) => m.DateDeliveryModule)
+        component: DateDeliveryComponent
       },
       {
         path: 'summarize',
-        loadChildren: () => import('./summarize/summarize.module').then((m) => m.SummarizeModule)
+        component: SummarizeComponent
       }
     ]
   }

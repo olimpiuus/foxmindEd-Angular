@@ -11,6 +11,7 @@ export class OrderListComponent {
   form: FormControl;
   items: any[];
   constructor(private _form: PersonalDataService) {
+    // this.form = this._form.getForm().get('items')! as FormGroup;
     this.form = this._form.getForm().get('items')! as FormControl;
     this.items = this._form.cart;
   }

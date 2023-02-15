@@ -10,9 +10,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ButtonsNavigationComponent } from './buttons-navigation/buttons-navigation.component';
 import { MatButtonModule } from '@angular/material/button';
+import { AddressComponent } from './address/address.component';
+import { DateDeliveryComponent } from './date-delivery/date-delivery.component';
+import { OrderListComponent } from './order-list/order-list.component';
+import { PaymentComponent } from './payment/payment.component';
+import { SummarizeComponent } from './summarize/summarize.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
+import { LimitCharactersPipe } from './limit-characters.pipe';
 
+import { MatSelectModule } from '@angular/material/select';
+import { JSONStrPipe } from './JSON-str.pipe';
+import { TitleFormPipe } from './title-form.pipe';
 @NgModule({
-  declarations: [CheckoutComponent, NavComponent, ButtonsNavigationComponent],
+  declarations: [CheckoutComponent, NavComponent, ButtonsNavigationComponent,AddressComponent,CheckoutComponent,DateDeliveryComponent,OrderListComponent,PaymentComponent,SummarizeComponent,LimitCharactersPipe,TitleFormPipe,JSONStrPipe],
   imports: [
     CommonModule,
     CheckoutRoutingModule,
@@ -21,7 +35,13 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatListModule,
+    MatSelectModule,
+    MatRadioModule
   ]
 })
 export class CheckoutModule {}
