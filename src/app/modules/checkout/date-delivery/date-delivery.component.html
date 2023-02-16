@@ -6,9 +6,17 @@
 >
   <mat-radio-button #today class="example-radio-button" value="Today"> Today </mat-radio-button>
 
-  <mat-radio-button #tomorrow class="example-radio-button" value="Tomorow"> Tomorow </mat-radio-button>
+  <mat-radio-button #tomorrow class="example-radio-button" value="Tomorow">
+    Tomorow
+  </mat-radio-button>
 
-  <mat-radio-button (change)="log()" #customDate class="example-radio-button" value="custom" [checked]="dateDelivery.value!==''&&(!today.checked&&!tomorrow.checked)">
+  <mat-radio-button
+    (change)="log()"
+    #customDate
+    class="example-radio-button"
+    value="custom"
+    [checked]="dateDelivery.value !== '' && !today.checked && !tomorrow.checked"
+  >
     Custom
   </mat-radio-button>
 </mat-radio-group>

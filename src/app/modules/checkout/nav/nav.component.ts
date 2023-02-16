@@ -23,22 +23,26 @@ export class NavComponent {
     });
   }
 
-  findElement(){
+  findElement() {
     const navChildrenArray = [...this.navList.nativeElement.children];
     const findRouterlinkAttributeValue = (el: any) => {
       const attributes: any[] = [...el.attributes];
       return attributes.find((el: any) => el.name === 'routerlink').value;
     };
-    return navChildrenArray.find(
-      (el: any) => findRouterlinkAttributeValue(el) === this.routeName
-    );
+    return navChildrenArray.find((el: any) => findRouterlinkAttributeValue(el) === this.routeName);
   }
   public removeDisabledClass() {
-    const navRouterElement = this.findElement()
+    if (this.routeName === 'checkout') {
+      return;
+    }
+    const navRouterElement = this.findElement();
     navRouterElement.classList.remove('disabled');
   }
 
   ngAfterViewInit() {
     this.removeDisabledClass();
+  }
+  ngOnDestroy() {
+    this.event$.unsubscribe();
   }
 }

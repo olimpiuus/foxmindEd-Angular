@@ -20,13 +20,27 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
-import { LimitCharactersPipe } from './limit-characters.pipe';
 
 import { MatSelectModule } from '@angular/material/select';
-import { JSONStrPipe } from './JSON-str.pipe';
-import { TitleFormPipe } from './title-form.pipe';
+
+import { TitleFormPipe } from './pipes/title-form.pipe';
+import { LimitCharactersPipe } from './pipes/limit-characters.pipe';
+import { JSONStrPipe } from './pipes/JSON-str.pipe';
 @NgModule({
-  declarations: [CheckoutComponent, NavComponent, ButtonsNavigationComponent,AddressComponent,CheckoutComponent,DateDeliveryComponent,OrderListComponent,PaymentComponent,SummarizeComponent,LimitCharactersPipe,TitleFormPipe,JSONStrPipe],
+  declarations: [
+    CheckoutComponent,
+    NavComponent,
+    ButtonsNavigationComponent,
+    AddressComponent,
+    CheckoutComponent,
+    DateDeliveryComponent,
+    OrderListComponent,
+    PaymentComponent,
+    SummarizeComponent,
+    LimitCharactersPipe,
+    TitleFormPipe,
+    JSONStrPipe
+  ],
   imports: [
     CommonModule,
     CheckoutRoutingModule,

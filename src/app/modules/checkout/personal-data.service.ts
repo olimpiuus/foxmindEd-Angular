@@ -2,29 +2,22 @@ import { Injectable } from '@angular/core';
 import {
   FormBuilder,
   Validators,
-  FormGroup,
-  FormControl,
   AbstractControl,
   ValidationErrors,
   ValidatorFn
 } from '@angular/forms';
-import { CheckoutModule } from './checkout.module';
 
 export function noCustomValue(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     return control.value === 'custom' ? { noCustomValue: { value: control.value } } : null;
   };
 }
+
 @Injectable({
   providedIn: 'root'
 })
 export class PersonalDataService {
-  constructor(private fb: FormBuilder) {
-    // this.cart.forEach(item=>{
-    //   this.profileForm.controls.items.addControl(item.name,this.fb.control(''))
-    // })
-   
-  }
+  constructor(private fb: FormBuilder) {}
 
   cart = [
     {
@@ -49,7 +42,6 @@ export class PersonalDataService {
 
   profileForm = this.fb.group({
     items: ['', [Validators.required]],
-    // items: this.fb.group({}),
     personalInfo: this.fb.group({
       name: ['', Validators.required],
       middleName: [''],
@@ -71,13 +63,14 @@ export class PersonalDataService {
     dateOfDelivery: ['', [Validators.required, noCustomValue()]]
   });
 
-  
   getForm() {
     return this.profileForm;
   }
+
   getCart() {
     return this.cart;
   }
+
   public get addressClass() {
     const address = this.profileForm.get('address')!.status;
     const info = this.profileForm.get('personalInfo')!.status;
@@ -95,6 +88,7 @@ export class PersonalDataService {
     const status = this.profileForm.get('items')!.status;
     return status === 'INVALID' ? 'invalid' : 'valid';
   }
+
   routeAdj = {
     'order-list': 'items',
     address: 'address',
@@ -110,7 +104,11 @@ export class PersonalDataService {
     const formName = formNameAndRoute ? formNameAndRoute[1] : '';
     return this.profileForm.get(formName);
   }
+
   getNextFormRoute(routeForm: string) {
+    if (routeForm === 'checkout') {
+      return 'address';
+    }
     if (routeForm === 'summarize') {
       return 'submit';
     }
@@ -118,6 +116,7 @@ export class PersonalDataService {
     const indexKey = keys.findIndex((name) => name === routeForm);
     return keys[indexKey + 1];
   }
+
   getPreviousFormRoute(routeForm: string) {
     if (routeForm === 'order-list') {
       return '';
