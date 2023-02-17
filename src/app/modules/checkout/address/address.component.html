@@ -3,6 +3,10 @@
   <mat-form-field *ngFor="let control of controlsPersonal" appearance="fill" style="margin: 5px">
     <mat-label #name>{{ control }}</mat-label>
     <input [formControlName]="control" [type]="typeInputCorrection(name.textContent!)" matInput />
+    <mat-error *ngIf="formPersonal.get(control)!.hasError('required')">{{control}} is required</mat-error>
+    <mat-error *ngIf="formPersonal.get(control)!.hasError('email')">Email is invalid</mat-error>
+    <mat-error *ngIf="formPersonal.get(control)!.hasError('pattern')">Telephone is invalid</mat-error>
+    
   </mat-form-field>
 </form>
 
@@ -11,5 +15,7 @@
   <mat-form-field *ngFor="let control of controlsAddress" appearance="fill" style="margin: 5px">
     <mat-label>{{ control }}</mat-label>
     <input [formControlName]="control" matInput />
+    <mat-error *ngIf="formAddress.get(control)!.hasError('required')">{{control}} is required</mat-error>
+
   </mat-form-field>
 </form>

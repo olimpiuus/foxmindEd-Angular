@@ -31,7 +31,7 @@ export class NavComponent {
     };
     return navChildrenArray.find((el: any) => findRouterlinkAttributeValue(el) === this.routeName);
   }
-  
+
   public removeDisabledClass() {
     if (this.routeName === 'checkout') {
       return;
