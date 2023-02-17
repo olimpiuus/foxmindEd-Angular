@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { TitleFormPipe } from './pipes/title-form.pipe';
 import { LimitCharactersPipe } from './pipes/limit-characters.pipe';
 import { JSONStrPipe } from './pipes/JSON-str.pipe';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 @NgModule({
   declarations: [
     CheckoutComponent,
@@ -39,7 +40,8 @@ import { JSONStrPipe } from './pipes/JSON-str.pipe';
     SummarizeComponent,
     LimitCharactersPipe,
     TitleFormPipe,
-    JSONStrPipe
+    JSONStrPipe,
+    ThankYouComponent
   ],
   imports: [
     CommonModule,

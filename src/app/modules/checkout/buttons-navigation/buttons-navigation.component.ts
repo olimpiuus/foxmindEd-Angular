@@ -46,8 +46,8 @@ export class ButtonsNavigationComponent {
     if (this.activeFormRoute === 'checkout') {
       return;
     }
-    // if (this.activeFormRoute === 'summarize') {
-    // }
+    if (this.activeFormRoute === 'summarize') {
+    }
 
     this.activeForm = this.form.getFormByRoute(this.activeFormRoute) as FormGroup;
   }

@@ -31,6 +31,7 @@ export class NavComponent {
     };
     return navChildrenArray.find((el: any) => findRouterlinkAttributeValue(el) === this.routeName);
   }
+  
   public removeDisabledClass() {
     if (this.routeName === 'checkout') {
       return;
@@ -42,6 +43,14 @@ export class NavComponent {
   ngAfterViewInit() {
     this.removeDisabledClass();
   }
+  
+  public createNewOrder() {
+    if(confirm('Delete current order and create new?')) {
+      this.form.resetForm()
+      this.router.navigate(['/']);
+    }
+  }
+
   ngOnDestroy() {
     this.event$.unsubscribe();
   }

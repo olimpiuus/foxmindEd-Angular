@@ -6,6 +6,7 @@ import { DateDeliveryComponent } from './date-delivery/date-delivery.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SummarizeComponent } from './summarize/summarize.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
         component: SummarizeComponent
       }
     ]
+  },
+  {
+    path:'thank-you',
+    component: ThankYouComponent
   }
 ];
 @NgModule({

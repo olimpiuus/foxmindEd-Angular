@@ -71,6 +71,10 @@ export class PersonalDataService {
     return this.cart;
   }
 
+  resetForm(){
+    this.profileForm.reset()
+  }
+
   public get addressClass() {
     const address = this.profileForm.get('address')!.status;
     const info = this.profileForm.get('personalInfo')!.status;
@@ -110,7 +114,7 @@ export class PersonalDataService {
       return 'address';
     }
     if (routeForm === 'summarize') {
-      return 'submit';
+      return 'thank-you';
     }
     const keys = Object.keys(this.routeAdj);
     const indexKey = keys.findIndex((name) => name === routeForm);
