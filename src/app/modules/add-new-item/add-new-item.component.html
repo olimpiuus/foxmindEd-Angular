@@ -9,10 +9,11 @@
     <input matInput formControlName="price" placeholder="Enter price" type="number" />
   </mat-form-field>
 
-  <mat-form-field>
+  <!-- <mat-form-field>
     <mat-label>Image URL</mat-label>
     <input matInput formControlName="imgUrl" placeholder="Enter image URL" type="text" />
-  </mat-form-field>
+  </mat-form-field> -->
+  <p-fileUpload  (onSend)="send()"  name="myfile[]" url="./upload.php" [multiple]=true accept="image/*" required></p-fileUpload>
 
   <mat-form-field>
     <mat-label>Shop</mat-label>
@@ -80,5 +81,6 @@
   <mat-checkbox formControlName="shipping">Free Shipping</mat-checkbox>
   <mat-checkbox formControlName="main">Main</mat-checkbox>
 
-  <button class="btn-submit" mat-raised-button color="primary" type="submit">Save</button>
+  <button class="btn-submit" mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid">Save {{productForm.invalid}}</button>
 </form>
+

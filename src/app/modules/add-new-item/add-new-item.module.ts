@@ -13,6 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
+import {FileUploadModule} from 'primeng/fileupload';
+import {HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [AddNewItemComponent],
   imports: [
@@ -28,7 +31,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    FileUploadModule,
+    HttpClientModule
   ]
 })
 export class AddNewItemModule {}

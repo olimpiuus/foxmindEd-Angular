@@ -29,7 +29,7 @@ export interface IProduct {
 })
 export class DataFetchService {
   constructor(private http: HttpClient) {}
-  productsUrl = '/assets/data/data.json';
+  productsUrl = 'https://bike-shop-336d1-default-rtdb.firebaseio.com/data.json'
 
   getProductsArray(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.productsUrl);

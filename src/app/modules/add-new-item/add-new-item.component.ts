@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IProduct } from '../main/data-fetch.service';
 
+
+
 @Component({
   selector: 'app-add-new-item',
   templateUrl: './add-new-item.component.html',
@@ -17,7 +19,7 @@ export class AddNewItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      imgUrl: ['', Validators.required],
+      // imgUrl: ['', Validators.required],
       price: ['', Validators.required],
       main: [false],
       shop: ['', Validators.required],
@@ -45,7 +47,10 @@ export class AddNewItemComponent implements OnInit {
       ? this.productForm.get('discountUntil')?.value
       : null;
   }
-
+  send(){
+    console.log('send');
+    
+  }
   onSubmit() {
     console.log(this.productForm.value);
     const newProduct: IProduct = {
