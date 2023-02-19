@@ -31,7 +31,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent, ContactComponent, MapComponent, ContactFormComponent],
+  declarations: [
+    AppComponent,
+    NavBarComponent,
+    ContactComponent,
+    MapComponent,
+    ContactFormComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -13,7 +13,6 @@ export class ButtonsNavigationComponent {
   route: string;
   activeForm: FormGroup;
   activeFormRoute: string;
-  // valid: boolean;
 
   constructor(private router: Router, public form: PersonalDataService) {
     this.route = router.url;
@@ -31,21 +30,25 @@ export class ButtonsNavigationComponent {
       return false;
     }
     if (this.activeFormRoute === 'address') {
-      return this.activeForm.status === 'INVALID' ||
-        this.form.getForm().get('personalInfo')!.status === 'INVALID'
+      return !this.activeForm.valid || !this.form.getForm().get('personalInfo')!.valid
         ? true
         : false;
     }
-    return this.activeForm.status === 'VALID' ? false : true;
+    return this.activeForm.valid ? false : true;
   }
+
   public get btnNextText() {
     return this.activeFormRoute === 'summarize' ? 'submit' : 'next';
   }
 
   checkBtn() {
     this.activeFormRoute = this.route.split('/').pop()!;
-    // if (this.activeFormRoute === 'summarize') {
-    // }
+    if (this.activeFormRoute === 'checkout') {
+      return;
+    }
+    if (this.activeFormRoute === 'summarize') {
+    }
+
     this.activeForm = this.form.getFormByRoute(this.activeFormRoute) as FormGroup;
   }
 
@@ -54,5 +57,9 @@ export class ButtonsNavigationComponent {
   }
   public get previousPage() {
     return this.form.getPreviousFormRoute(this.activeFormRoute);
+  }
+
+  ngOnDestroy() {
+    this.event$.unsubscribe();
   }
 }

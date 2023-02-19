@@ -14,11 +14,5 @@ export class OrderListComponent {
     this.form = this._form.getForm().get('items')! as FormControl;
     this.items = this._form.cart;
   }
-  ngOnInit() {
-    this.form.setValue(this.items.map((item) => item.name));
-  }
-
-  log() {
-    console.log(this.form);
-  }
+  ngOnInit() {}
 }

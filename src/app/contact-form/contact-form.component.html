@@ -1,18 +1,25 @@
-
 <form #contactForm="ngForm" class="contact-form" (ngSubmit)="onSubmit(contactForm)">
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input matInput type="text" [(ngModel)]="name" name="name" required>
+    <input matInput type="text" [(ngModel)]="name" name="name" required />
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Surname</mat-label>
-    <input matInput type="text" [(ngModel)]="surname" name="surname" required>
+    <input matInput type="text" [(ngModel)]="surname" name="surname" required />
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>E-mail</mat-label>
-    <input matInput type="email" [(ngModel)]="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #emailInput>
+    <input
+      matInput
+      type="email"
+      [(ngModel)]="email"
+      name="email"
+      required
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+      #emailInput
+    />
     <mat-error *ngIf="emailInput.validity">Please enter a valid email address</mat-error>
   </mat-form-field>
 

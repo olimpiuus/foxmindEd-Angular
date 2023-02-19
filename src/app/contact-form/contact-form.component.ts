@@ -11,7 +11,7 @@ export class ContactFormComponent {
   surname: string;
   email: string;
   description: string;
-  
+
   onSubmit(form: NgForm) {
     console.log(form.value);
     form.resetForm({

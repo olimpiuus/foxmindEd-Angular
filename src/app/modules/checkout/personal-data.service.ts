@@ -2,19 +2,17 @@ import { Injectable } from '@angular/core';
 import {
   FormBuilder,
   Validators,
-  FormGroup,
-  FormControl,
   AbstractControl,
   ValidationErrors,
   ValidatorFn
 } from '@angular/forms';
-import { CheckoutModule } from './checkout.module';
 
 export function noCustomValue(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     return control.value === 'custom' ? { noCustomValue: { value: control.value } } : null;
   };
 }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,14 +27,14 @@ export class PersonalDataService {
         'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
     },
     {
-      id: 1,
-      name: 'Argon 18',
+      id: 2,
+      name: 'Bike 22',
       description:
         'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
     },
     {
-      id: 1,
-      name: 'Argon 18',
+      id: 3,
+      name: 'Bike 12',
       description:
         'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
     }
@@ -65,13 +63,18 @@ export class PersonalDataService {
     dateOfDelivery: ['', [Validators.required, noCustomValue()]]
   });
 
-  
   getForm() {
     return this.profileForm;
   }
+
   getCart() {
     return this.cart;
   }
+
+  resetForm(){
+    this.profileForm.reset()
+  }
+
   public get addressClass() {
     const address = this.profileForm.get('address')!.status;
     const info = this.profileForm.get('personalInfo')!.status;
@@ -89,6 +92,7 @@ export class PersonalDataService {
     const status = this.profileForm.get('items')!.status;
     return status === 'INVALID' ? 'invalid' : 'valid';
   }
+
   routeAdj = {
     'order-list': 'items',
     address: 'address',
@@ -104,14 +108,19 @@ export class PersonalDataService {
     const formName = formNameAndRoute ? formNameAndRoute[1] : '';
     return this.profileForm.get(formName);
   }
+
   getNextFormRoute(routeForm: string) {
+    if (routeForm === 'checkout') {
+      return 'address';
+    }
     if (routeForm === 'summarize') {
-      return 'submit';
+      return 'thank-you';
     }
     const keys = Object.keys(this.routeAdj);
     const indexKey = keys.findIndex((name) => name === routeForm);
     return keys[indexKey + 1];
   }
+
   getPreviousFormRoute(routeForm: string) {
     if (routeForm === 'order-list') {
       return '';

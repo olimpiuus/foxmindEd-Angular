@@ -7,8 +7,9 @@ export class JSONStrPipe implements PipeTransform {
   transform(value: unknown, ...args: unknown[]): unknown {
     // const regex = /[.\]/g;
     return JSON.stringify(value)
-    .split(',')
-    .map(el=>el.replace(/[^:\w\s]/g, ''))
-    .join(', ').replace(/:/g, ': ')
+      .split(',')
+      .map((el) => el.replace(/[^:\w\s]/g, ''))
+      .join(', ')
+      .replace(/:/g, ': ');
   }
 }
