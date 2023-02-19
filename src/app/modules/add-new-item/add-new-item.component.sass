@@ -1,0 +1,24 @@
+@mixin grid-full-row
+  grid-column: 1/-1
+.form
+  display: grid
+  width: 100%
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
+  gap: 20px 
+
+.description-field
+  @include grid-full-row
+  
+
+.optional-title
+  @include grid-full-row
+
+.btn-submit
+  @include grid-full-row
+.custom-color-btn
+  height: 56px
+
+.custom-color-input
+  display: flex
+  &>mat-form-field
+    flex-grow: 1

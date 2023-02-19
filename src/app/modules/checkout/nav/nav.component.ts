@@ -43,10 +43,10 @@ export class NavComponent {
   ngAfterViewInit() {
     this.removeDisabledClass();
   }
-  
+
   public createNewOrder() {
-    if(confirm('Delete current order and create new?')) {
-      this.form.resetForm()
+    if (confirm('Delete current order and create new?')) {
+      this.form.resetForm();
       this.router.navigate(['/']);
     }
   }

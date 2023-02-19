@@ -29,6 +29,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     NavBarComponent,
     ContactComponent,
     MapComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    BtnAddNewItemComponent
   ],
   imports: [
     BrowserModule,

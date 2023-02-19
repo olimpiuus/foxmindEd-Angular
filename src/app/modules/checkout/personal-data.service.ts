@@ -71,8 +71,8 @@ export class PersonalDataService {
     return this.cart;
   }
 
-  resetForm(){
-    this.profileForm.reset()
+  resetForm() {
+    this.profileForm.reset();
   }
 
   public get addressClass() {

@@ -13,6 +13,11 @@ const routes: Routes = [
   {
     path: 'checkout',
     loadChildren: () => import('./modules/checkout/checkout.module').then((m) => m.CheckoutModule)
+  },
+  {
+    path: 'add-new-item',
+    loadChildren: () =>
+      import('./modules/add-new-item/add-new-item.module').then((m) => m.AddNewItemModule)
   }
 ];
 
