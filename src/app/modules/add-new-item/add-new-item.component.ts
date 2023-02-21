@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IProduct } from '../main/data-fetch.service';
 
 
@@ -11,15 +11,17 @@ import { IProduct } from '../main/data-fetch.service';
 })
 export class AddNewItemComponent implements OnInit {
   productForm: FormGroup;
-
+  state = 'form'
   colorList = ['Blue', 'Grey', 'Orange', 'Black'];
   sizeList = ['S', 'L', 'XL', 'XXL'];
+  imageData: any;
+  newProduct: IProduct;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      // imgUrl: ['', Validators.required],
+      imgBase64: ['', Validators.required],
       price: ['', Validators.required],
       main: [false],
       shop: ['', Validators.required],
@@ -47,16 +49,22 @@ export class AddNewItemComponent implements OnInit {
       ? this.productForm.get('discountUntil')?.value
       : null;
   }
-  send(){
-    console.log('send');
-    
+  send(event:any){
+    const file: File = event.files[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.productForm.get('imgBase64')!.setValue(e.target.result)
+    };
+    reader.readAsDataURL(file);
   }
-  onSubmit() {
-    console.log(this.productForm.value);
-    const newProduct: IProduct = {
+
+  onPreview(){
+    this.state='preview'
+    
+    this.newProduct = {
       id: 0,
       name: this.productForm.get('name')?.value,
-      imgUrl: this.productForm.get('imgUrl')?.value,
+      imgUrl: this.productForm.get('imgBase64')?.value,
       price: this.productForm.get('price')?.value,
       shop: this.productForm.get('shop')?.value,
       discount: this.discount,
@@ -69,8 +77,12 @@ export class AddNewItemComponent implements OnInit {
       size: this.productForm.get('size')?.value,
       review: []
     };
-    console.log(newProduct);
-    this.productForm.reset();
+  }
+
+  onSubmit() {
+    console.log(this.productForm.value);
+    console.log('submit');
+    this.productForm.reset()
   }
 
   @ViewChild('newColor') newColor: ElementRef;

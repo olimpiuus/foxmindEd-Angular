@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class ShoppingItemDetailedComponent {
   sub: Subscription;
   id: number;
-  product: IProduct;
+  bike: IProduct;
 
   constructor(
     private _Activatedroute: ActivatedRoute,
@@ -35,24 +35,9 @@ export class ShoppingItemDetailedComponent {
   }
 
   getProduct() {
-    this.sub = this._requestService.getProductById(this.id).subscribe((x) => (this.product = x!));
+    this.sub = this._requestService.getProductById(this.id).subscribe((x) => (this.bike = x!));
   }
   unsubscribe() {
     this.sub.unsubscribe();
-  }
-
-  public get rating() {
-    const arr = this.product.review.map((review) => {
-      return review.rating;
-    });
-    const sum = arr.reduce((acc, el) => (acc += el), 0);
-    return sum / arr.length;
-  }
-  public get ratingQuantity() {
-    return this.product.review.length;
-  }
-
-  public get checked() {
-    return true;
   }
 }

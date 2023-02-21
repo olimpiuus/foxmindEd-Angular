@@ -15,9 +15,11 @@ import { MatSelectModule } from '@angular/material/select';
 
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
+import { StarRatingModule } from 'angular-star-rating';
 
+import { BikeDetailedComponent } from './bike-detailed/bike-detailed.component';
 @NgModule({
-  declarations: [AddNewItemComponent],
+  declarations: [AddNewItemComponent,BikeDetailedComponent],
   imports: [
     CommonModule,
     AddNewItemRoutingModule,
@@ -33,7 +35,8 @@ import {HttpClientModule} from '@angular/common/http';
     MatButtonModule,
     MatIconModule,
     FileUploadModule,
-    HttpClientModule
+    HttpClientModule,
+    StarRatingModule.forRoot(),
   ]
 })
 export class AddNewItemModule {}

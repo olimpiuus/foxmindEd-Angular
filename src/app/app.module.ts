@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { StarRatingModule } from 'angular-star-rating';
 // components
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -29,7 +29,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ContactFormComponent } from './contact-form/contact-form.component';
-import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.comp
     ContactComponent,
     MapComponent,
     ContactFormComponent,
-    BtnAddNewItemComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +54,9 @@ import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.comp
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    StarRatingModule.forRoot(),
+
   ],
   bootstrap: [AppComponent],
   exports: [MapComponent]
