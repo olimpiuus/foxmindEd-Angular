@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IProduct, DataFetchService } from '../main/data-fetch.service';
-import { MainPageComponent } from '../main/main-page/main-page.component';
 
 
 
@@ -19,7 +18,7 @@ export class AddNewItemComponent implements OnInit {
   newProduct: IProduct;
   id: any;
 
-  constructor(private fb: FormBuilder, private fetch:DataFetchService, private listPage:MainPageComponent) {}
+  constructor(private fb: FormBuilder, private fetch:DataFetchService) {}
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
@@ -30,8 +29,8 @@ export class AddNewItemComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       shipping: [''],
-      discount: [''],
-      discountUntil: [''],
+      discount: ['',Validators.required],
+      discountUntil: ['',Validators.required],
       new: [false],
       color: ['', Validators.required],
       size: ['', Validators.required],
@@ -60,9 +59,7 @@ export class AddNewItemComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  onPreview(){
-    this.state='preview'
-
+  createProduct(){
     this.newProduct = {
       id: 0,
       name: this.productForm.get('name')?.value,
@@ -79,6 +76,11 @@ export class AddNewItemComponent implements OnInit {
       size: this.productForm.get('size')?.value,
       review: []
     };
+  }
+
+  onPreview(){
+    this.createProduct()
+    this.state='preview'
 
     this.fetch.getUniqId().subscribe(response=>{
       this.newProduct.id = response      
@@ -86,8 +88,8 @@ export class AddNewItemComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.listPage.products.push(this.newProduct)
-
+    this.createProduct()
+    this.fetch.dataList.push(this.newProduct)
     this.productForm.reset()
   }
 

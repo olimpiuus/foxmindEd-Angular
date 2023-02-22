@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
+import {data} from 'src/assets/data/data'
 
 interface IReview {
   author: string;
@@ -17,30 +18,38 @@ export interface IProduct {
   discount: number;
   main: boolean;
   description: string;
-  shipping: string;
+  shipping: string|null;
   new: boolean;
   discountUntil: string;
   color: string[];
   size: string[];
   review: IReview[];
 }
+
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataFetchService {
-  list: IProduct[];
+  dataList: IProduct[];
+
   constructor(private http: HttpClient) {
-    this.getProductsArray().subscribe(response=>this.list=response)
+    
+    // this.getProductsArray().subscribe(response=>this.list=response)
+    this.dataList=data
   }
-  productsUrl = 'https://bike-shop-336d1-default-rtdb.firebaseio.com/data.json'
+  productsUrl = '../../../assets/data/data.ts'
 
   getProductsArray(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.productsUrl);
+    return of(this.dataList)
+    // return this.http.get<IProduct[]>(this.productsUrl);
   }
 
   ngOnInit(){
    
   }
+
 
   getProductById(id: number): Observable<IProduct> {
     return this.http

@@ -39,17 +39,6 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field class="description-field">
-    <mat-label>Description</mat-label>
-    <textarea
-      matInput
-      formControlName="description"
-      placeholder="Enter product description"
-      type="text"
-    ></textarea>
-  </mat-form-field>
-
-  <h4 class="optional-title">Optional</h4>
   <mat-form-field>
     <mat-label>Discount (%)</mat-label>
     <input
@@ -67,11 +56,23 @@
       [matDatepicker]="picker"
       formControlName="discountUntil"
       placeholder="Select discount expiration date"
-      type="datetime-local"
+      type="date-local"
     />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+
+  <mat-form-field class="description-field">
+    <mat-label>Description</mat-label>
+    <textarea
+      matInput
+      formControlName="description"
+      placeholder="Enter product description"
+      type="text"
+    ></textarea>
+  </mat-form-field>
+
+  <h4 class="optional-title">Optional</h4>
 
   <mat-checkbox formControlName="new">New</mat-checkbox>
   <mat-checkbox formControlName="shipping">Free Shipping</mat-checkbox>
