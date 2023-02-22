@@ -52,8 +52,7 @@ export class DataFetchService {
 
 
   getProductById(id: number): Observable<IProduct> {
-    return this.http
-      .get<IProduct[]>(this.productsUrl)
+    return this.getProductsArray()
       .pipe(map((products) => products.find((r) => r.id === id)!));
   }
 
