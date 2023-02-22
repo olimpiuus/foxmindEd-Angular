@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IProduct } from '../main/data-fetch.service';
+import { IProduct, DataFetchService } from '../main/data-fetch.service';
+import { MainPageComponent } from '../main/main-page/main-page.component';
 
 
 
@@ -16,8 +17,9 @@ export class AddNewItemComponent implements OnInit {
   sizeList = ['S', 'L', 'XL', 'XXL'];
   imageData: any;
   newProduct: IProduct;
+  id: any;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private fetch:DataFetchService, private listPage:MainPageComponent) {}
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
@@ -49,7 +51,7 @@ export class AddNewItemComponent implements OnInit {
       ? this.productForm.get('discountUntil')?.value
       : null;
   }
-  send(event:any){
+  onLoadImg(event:any){
     const file: File = event.files[0];
     const reader = new FileReader();
     reader.onload = (e: any) => {
@@ -60,7 +62,7 @@ export class AddNewItemComponent implements OnInit {
 
   onPreview(){
     this.state='preview'
-    
+
     this.newProduct = {
       id: 0,
       name: this.productForm.get('name')?.value,
@@ -77,17 +79,26 @@ export class AddNewItemComponent implements OnInit {
       size: this.productForm.get('size')?.value,
       review: []
     };
+
+    this.fetch.getUniqId().subscribe(response=>{
+      this.newProduct.id = response      
+    })
   }
 
   onSubmit() {
-    console.log(this.productForm.value);
-    console.log('submit');
+    // this.listPage.products.push(this.newProduct)
+
     this.productForm.reset()
+  }
+
+  onEdit(){
+    this.state='form'
   }
 
   @ViewChild('newColor') newColor: ElementRef;
 
   addCustomColor() {
+    
     this.colorList.push(this.newColor.nativeElement.value);
     this.newColor.nativeElement.value = '';
   }

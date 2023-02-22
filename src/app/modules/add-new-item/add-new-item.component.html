@@ -9,7 +9,7 @@
     <input matInput formControlName="price" placeholder="Enter price" type="number" />
   </mat-form-field>
 
-  <p-fileUpload  (onSelect)="send($event)"  name="myfile[]" url="" accept="image/*" required></p-fileUpload>
+  <p-fileUpload  (onSelect)="onLoadImg($event)"  name="myfile[]" url="" accept="image/*"></p-fileUpload>
 
   <mat-form-field>
     <mat-label>Shop</mat-label>
@@ -82,6 +82,6 @@
 
 <app-bike-detailed *ngIf="state==='preview'&&newProduct" [product]="newProduct"></app-bike-detailed>
 
-<button  *ngIf="state==='preview'" class="btn-submit" type="submit" mat-raised-button color="accent" (click)="state='form'">Edit</button>
-<button class="btn-submit" mat-raised-button color="primary" [disabled]="productForm.invalid" [routerLink]="['/']" routerLinkActive="router-link-active"  (click)="onSubmit()">Add new item</button>
+<button  *ngIf="state==='preview'" class="btn-submit" type="submit" mat-raised-button color="accent" (click)="onEdit()">Edit</button>
+<button class="btn-submit" mat-raised-button color="primary" [disabled]="productForm.invalid" (click)="onSubmit()" [routerLink]="['/']">Add new item</button>
 

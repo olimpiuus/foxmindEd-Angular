@@ -10,7 +10,9 @@ import { ShoppingItemComponent } from '../shopping-item/shopping-item.component'
 export class MainPageComponent {
   products: IProduct[];
 
-  constructor(private requestService: DataFetchService) {}
+  constructor(private requestService: DataFetchService) {
+    // this.products=this.requestService.list
+  }
 
   @ViewChildren(ShoppingItemComponent)
   primaryShoppingItem: QueryList<ShoppingItemComponent>;
@@ -18,4 +20,7 @@ export class MainPageComponent {
   ngOnInit() {
     this.requestService.getProductsArray().subscribe((response) => (this.products = response));
   }
+
+
+
 }

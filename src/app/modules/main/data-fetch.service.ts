@@ -28,17 +28,36 @@ export interface IProduct {
   providedIn: 'root'
 })
 export class DataFetchService {
-  constructor(private http: HttpClient) {}
+  list: IProduct[];
+  constructor(private http: HttpClient) {
+    this.getProductsArray().subscribe(response=>this.list=response)
+  }
   productsUrl = 'https://bike-shop-336d1-default-rtdb.firebaseio.com/data.json'
 
   getProductsArray(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.productsUrl);
   }
 
+  ngOnInit(){
+   
+  }
+
   getProductById(id: number): Observable<IProduct> {
-    const url = `${this.productsUrl}`;
     return this.http
-      .get<IProduct[]>(url)
+      .get<IProduct[]>(this.productsUrl)
       .pipe(map((products) => products.find((r) => r.id === id)!));
+  }
+
+  getUniqId(): Observable<number>{
+
+    const uniqId = (arr:any[]):any=> {
+      const random0to10000 = ()=>Math.floor(Math.random()*10000+1)
+      const id = random0to10000()
+      return !arr.includes(id)?id:uniqId(arr)
+    }
+
+    return this.getProductsArray().pipe(
+      map((products)=>uniqId(products.map(product=>product.id)))
+    )
   }
 }

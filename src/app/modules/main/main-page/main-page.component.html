@@ -1,4 +1,4 @@
-<ul class="shopping-list">
+<ul *ngIf="products" class="shopping-list">
   <app-shopping-item
     *ngFor="let product of products; index as index"
     [product]="product"
