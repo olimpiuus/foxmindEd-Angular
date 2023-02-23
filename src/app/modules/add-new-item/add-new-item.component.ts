@@ -71,7 +71,7 @@ export class AddNewItemComponent implements OnInit {
       description: this.productForm.get('description')?.value,
       shipping: this.shipping,
       new: this.productForm.get('new')?.value,
-      discountUntil: this.discountUntil,
+      discountUntil: this.discountUntil.toISOString().slice(0, -5),
       color: this.productForm.get('color')?.value,
       size: this.productForm.get('size')?.value,
       review: []
