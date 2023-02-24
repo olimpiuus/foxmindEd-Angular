@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "bike-shop-336d1"
+  },
+  "targets": {
+    "bike-shop-336d1": {
+      "hosting": {
+        "angular": [
+          "bike-shop-336d1"
+        ]
+      }
+    }
+  }
+}

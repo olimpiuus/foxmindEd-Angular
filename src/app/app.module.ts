@@ -30,6 +30,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { provideFirebaseApp, getApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +63,13 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     MatInputModule,
     MatButtonModule,
     StarRatingModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    provideDatabase(() => getDatabase())
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFirestoreModule,
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    // provideFirebaseApp(() => getApp()),
+    // provideFirestore(() => getFirestore())
 
   ],
   bootstrap: [AppComponent],

@@ -19,6 +19,11 @@ import { LimitCharactersPipe } from './limit-characters.pipe';
 import { BikeDetailedComponent } from 'src/app/modules/main/bike-detailed/bike-detailed.component';
 import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.component';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     MainPageComponent,
@@ -37,6 +42,16 @@ import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.comp
     MatSelectModule,
     MatInputModule,
     StarRatingModule.forRoot(),
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFirestoreModule,
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    // provideFirebaseApp(() => getApp()),
+    // provideFirestore(() => getFirestore())
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule
+
   ],
   providers: [DataFetchService],
   exports:[BikeDetailedComponent]
