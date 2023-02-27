@@ -22,7 +22,6 @@ import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.comp
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -41,20 +40,18 @@ import { environment } from 'src/environments/environment';
     MatButtonModule,
     MatSelectModule,
     MatInputModule,
-    StarRatingModule.forRoot(),
+    StarRatingModule.forRoot()
     // AngularFireModule.initializeApp(environment.firebase),
     // AngularFirestoreModule,
     // AngularFireModule.initializeApp(environment.firebaseConfig),
     // provideFirebaseApp(() => getApp()),
     // provideFirestore(() => getFirestore())
 
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAnalyticsModule,
-    AngularFirestoreModule
-
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireAnalyticsModule,
+    // AngularFirestoreModule
   ],
   providers: [DataFetchService],
-  exports:[BikeDetailedComponent]
-  
+  exports: [BikeDetailedComponent]
 })
 export class MainModule {}

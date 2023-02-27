@@ -1,8 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, map, of } from 'rxjs';
-import {data} from 'src/assets/data/data'
+import { Observable, map } from 'rxjs';
 
+import { getFirestore } from 'firebase/firestore/lite';
+import { getDatabase, set } from 'firebase/database';
+import { from } from 'rxjs';
+
+import { getStorage } from 'firebase/storage';
+
+// 1123123123123
+// Import the functions you need from the SDKs you need
+import { initializeApp } from 'firebase/app';
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: 'AIzaSyAwdSgV9p34AkgUCHwZHKaF6Bn0_SSirVw',
+  authDomain: 'foxminded-bike.firebaseapp.com',
+  projectId: 'foxminded-bike',
+  storageBucket: 'foxminded-bike.appspot.com',
+  messagingSenderId: '113082574962',
+  appId: '1:113082574962:web:b72a76111cf77559a6faeb'
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+import { ref, child, get } from 'firebase/database';
 
 interface IReview {
   author: string;
@@ -19,7 +43,7 @@ export interface IProduct {
   discount: number;
   main: boolean;
   description: string;
-  shipping: string|null;
+  shipping: string | null;
   new: boolean;
   discountUntil: string;
   color: string[];
@@ -27,46 +51,41 @@ export interface IProduct {
   review: IReview[];
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
-
 export class DataFetchService {
   dataList: IProduct[];
 
-  constructor(private http: HttpClient) {
-    
-    // this.getProductsArray().subscribe(response=>this.list=response)
-    this.dataList=data
-  }
-  productsUrl = '../../../assets/data/data.ts'
-
   getProductsArray(): Observable<IProduct[]> {
-    return of(this.dataList)
-    // return this.http.get<IProduct[]>(this.productsUrl);
+    const dbRef = ref(getDatabase());
+    return from(
+      get(child(dbRef, `list`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            return snapshot.val();
+          } else {
+            console.log('No data available');
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+    );
   }
-
-  ngOnInit(){
-   
-  }
-
 
   getProductById(id: number): Observable<IProduct> {
-    return this.getProductsArray()
-      .pipe(map((products) => products.find((r) => r.id === id)!));
+    return this.getProductsArray().pipe(map((products) => products.find((r) => r.id === id)!));
   }
 
-  getUniqId(): Observable<number>{
+  getNextId(): Observable<number> {
+    return this.getProductsArray().pipe(map((products) => products.length));
+  }
 
-    const uniqId = (arr:any[]):any=> {
-      const random0to10000 = ()=>Math.floor(Math.random()*10000+1)
-      const id = random0to10000()
-      return !arr.includes(id)?id:uniqId(arr)
-    }
-
-    return this.getProductsArray().pipe(
-      map((products)=>uniqId(products.map(product=>product.id)))
-    )
+  addElementToList(obj: IProduct): void {
+    this.getNextId().subscribe((id) => {
+      const db = getDatabase();
+      set(ref(db, `list/${id}`), obj);
+    });
   }
 }

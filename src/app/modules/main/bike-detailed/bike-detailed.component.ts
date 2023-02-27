@@ -7,8 +7,8 @@ import { IProduct } from '../data-fetch.service';
   styleUrls: ['./bike-detailed.component.sass']
 })
 export class BikeDetailedComponent {
-  @Input() product:IProduct
-  
+  @Input() product: IProduct;
+
   public get rating() {
     const arr = this.product.review.map((review) => {
       return review.rating;

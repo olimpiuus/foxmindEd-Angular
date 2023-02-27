@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IProduct, DataFetchService } from '../main/data-fetch.service';
 
-
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 @Component({
   selector: 'app-add-new-item',
@@ -11,26 +11,30 @@ import { IProduct, DataFetchService } from '../main/data-fetch.service';
 })
 export class AddNewItemComponent implements OnInit {
   productForm: FormGroup;
-  state = 'form'
+  state = 'form';
   colorList = ['Blue', 'Grey', 'Orange', 'Black'];
   sizeList = ['S', 'L', 'XL', 'XXL'];
   imageData: any;
   newProduct: IProduct;
   id: any;
+  uniqId: number;
 
-  constructor(private fb: FormBuilder, private fetch:DataFetchService) {}
+  constructor(private fb: FormBuilder, private fetch: DataFetchService) {}
 
   ngOnInit(): void {
+    this.fetch.getNextId().subscribe((id) => {
+      this.uniqId = id + 1;
+    });
     this.productForm = this.fb.group({
-      imgBase64: ['', Validators.required],
+      imgUrl: ['', Validators.required],
       price: ['', Validators.required],
       main: [false],
       shop: ['', Validators.required],
       name: ['', Validators.required],
       description: ['', Validators.required],
       shipping: [''],
-      discount: ['',Validators.required],
-      discountUntil: ['',Validators.required],
+      discount: ['', Validators.required],
+      discountUntil: ['', Validators.required],
       new: [false],
       color: ['', Validators.required],
       size: ['', Validators.required],
@@ -41,6 +45,7 @@ export class AddNewItemComponent implements OnInit {
   private get discount() {
     return this.productForm.get('discount')?.value ? this.productForm.get('discount')?.value : null;
   }
+
   private get shipping() {
     return this.productForm.get('shipping')?.value ? this.productForm.get('shipping')?.value : null;
   }
@@ -50,20 +55,28 @@ export class AddNewItemComponent implements OnInit {
       ? this.productForm.get('discountUntil')?.value
       : null;
   }
-  onLoadImg(event:any){
+
+  onLoadImg(event: any) {
     const file: File = event.files[0];
-    const reader = new FileReader();
-    reader.onload = (e: any) => {
-      this.productForm.get('imgBase64')!.setValue(e.target.result)
-    };
-    reader.readAsDataURL(file);
+    this.addFileToBase(file);
   }
 
-  createProduct(){
+  addFileToBase(file: File) {
+    const storage = getStorage();
+    const storageRef = ref(storage, `bike-id:${this.uniqId}`);
+
+    uploadBytes(storageRef, file).then((snapshot) => {
+      getDownloadURL(storageRef).then((url) => {
+        this.productForm.get('imgUrl')!.setValue(url);
+      });
+    });
+  }
+
+  createProduct() {
     this.newProduct = {
-      id: 0,
+      id: this.uniqId,
       name: this.productForm.get('name')?.value,
-      imgUrl: this.productForm.get('imgBase64')?.value,
+      imgUrl: this.productForm.get('imgUrl')?.value,
       price: this.productForm.get('price')?.value,
       shop: this.productForm.get('shop')?.value,
       discount: this.discount,
@@ -78,29 +91,24 @@ export class AddNewItemComponent implements OnInit {
     };
   }
 
-  onPreview(){
-    this.createProduct()
-    this.state='preview'
-
-    this.fetch.getUniqId().subscribe(response=>{
-      this.newProduct.id = response      
-    })
+  onPreview() {
+    this.createProduct();
+    this.state = 'preview';
   }
 
   onSubmit() {
-    this.createProduct()
-    this.fetch.dataList.push(this.newProduct)
-    this.productForm.reset()
+    this.createProduct();
+    this.fetch.addElementToList(this.newProduct);
+    this.productForm.reset();
   }
 
-  onEdit(){
-    this.state='form'
+  onEdit() {
+    this.state = 'form';
   }
 
   @ViewChild('newColor') newColor: ElementRef;
 
   addCustomColor() {
-    
     this.colorList.push(this.newColor.nativeElement.value);
     this.newColor.nativeElement.value = '';
   }

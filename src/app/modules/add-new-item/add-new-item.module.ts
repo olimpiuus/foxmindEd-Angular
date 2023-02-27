@@ -13,13 +13,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
-import {FileUploadModule} from 'primeng/fileupload';
-import {HttpClientModule} from '@angular/common/http';
+import { FileUploadModule } from 'primeng/fileupload';
+import { HttpClientModule } from '@angular/common/http';
 import { StarRatingModule } from 'angular-star-rating';
 
 import { BikeDetailedComponent } from './bike-detailed/bike-detailed.component';
 @NgModule({
-  declarations: [AddNewItemComponent,BikeDetailedComponent],
+  declarations: [AddNewItemComponent, BikeDetailedComponent],
   imports: [
     CommonModule,
     AddNewItemRoutingModule,
@@ -36,7 +36,7 @@ import { BikeDetailedComponent } from './bike-detailed/bike-detailed.component';
     MatIconModule,
     FileUploadModule,
     HttpClientModule,
-    StarRatingModule.forRoot(),
+    StarRatingModule.forRoot()
   ]
 })
 export class AddNewItemModule {}
