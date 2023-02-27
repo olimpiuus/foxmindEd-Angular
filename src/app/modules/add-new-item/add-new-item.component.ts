@@ -87,7 +87,7 @@ export class AddNewItemComponent implements OnInit {
       discountUntil: this.discountUntil.toISOString().slice(0, -5),
       color: this.productForm.get('color')?.value,
       size: this.productForm.get('size')?.value,
-      review: []
+      review: null,
     };
   }
 

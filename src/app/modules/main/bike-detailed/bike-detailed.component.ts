@@ -8,8 +8,12 @@ import { IProduct } from '../data-fetch.service';
 })
 export class BikeDetailedComponent {
   @Input() product: IProduct;
-
+  ngOnInit(){
+    console.log(this.product);
+    
+  }
   public get rating() {
+    if (!this.product.review) {return 0}
     const arr = this.product.review.map((review) => {
       return review.rating;
     });
@@ -17,6 +21,7 @@ export class BikeDetailedComponent {
     return sum / arr.length;
   }
   public get ratingQuantity() {
+    if (!this.product.review) {return 0}
     return this.product.review.length;
   }
 

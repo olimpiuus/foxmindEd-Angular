@@ -48,7 +48,7 @@ export interface IProduct {
   discountUntil: string;
   color: string[];
   size: string[];
-  review: IReview[];
+  review: IReview[]|null;
 }
 
 @Injectable({
