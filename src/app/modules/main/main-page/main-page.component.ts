@@ -1,6 +1,5 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataFetchService, IProduct } from '../data-fetch.service';
-import { ShoppingItemComponent } from '../shopping-item/shopping-item.component';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,11 +12,7 @@ export class MainPageComponent {
 
   constructor(private requestService: DataFetchService) {}
 
-  // @ViewChildren(ShoppingItemComponent)
-  // primaryShoppingItem: QueryList<ShoppingItemComponent>;
-
   ngOnInit() {
-    console.log(this.requestService);
     this.products = this.requestService.getProductsArray();
   }
 }
