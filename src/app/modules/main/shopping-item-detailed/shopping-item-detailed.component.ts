@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DataFetchService, IProduct } from '../data-fetch.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './shopping-item-detailed.component.html',
   styleUrls: ['./shopping-item-detailed.component.sass']
 })
-export class ShoppingItemDetailedComponent {
+export class ShoppingItemDetailedComponent implements OnInit, OnDestroy {
   sub: Subscription;
   id: number;
   bike: IProduct;

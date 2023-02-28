@@ -14,5 +14,4 @@ export class OrderListComponent {
     this.form = this._form.getForm().get('items')! as FormControl;
     this.items = this._form.cart;
   }
-  ngOnInit() {}
 }

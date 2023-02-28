@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IProduct, DataFetchService } from '../main/data-fetch.service';
 
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-
+import { map } from 'rxjs';
+import { getDatabase, set, ref as refData, child, get } from 'firebase/database';
 @Component({
   selector: 'app-add-new-item',
   templateUrl: './add-new-item.component.html',
@@ -22,9 +23,11 @@ export class AddNewItemComponent implements OnInit {
   constructor(private fb: FormBuilder, private fetch: DataFetchService) {}
 
   ngOnInit(): void {
-    this.fetch.getNextId().subscribe((id) => {
-      this.uniqId = id + 1;
-    });
+    // this.fetch.getNextId().subscribe((id) => {
+    //   this.uniqId = id + 1;
+    // });
+    this.getUniqId();
+
     this.productForm = this.fb.group({
       imgUrl: ['', Validators.required],
       price: ['', Validators.required],
@@ -40,6 +43,19 @@ export class AddNewItemComponent implements OnInit {
       size: ['', Validators.required],
       newColor: []
     });
+  }
+
+  getUniqId() {
+    const uniqId = (arr: any[]): any => {
+      const random0to10000 = () => Math.floor(Math.random() * 10000 + 1);
+      const id = random0to10000();
+      return !arr.includes(id) ? id : uniqId(arr);
+    };
+
+    this.fetch
+      .getProductsArray()
+      .pipe(map((products) => uniqId(products.map((product) => product.id))))
+      .subscribe((response) => (this.uniqId = response));
   }
 
   private get discount() {
@@ -65,7 +81,7 @@ export class AddNewItemComponent implements OnInit {
     const storage = getStorage();
     const storageRef = ref(storage, `bike-id:${this.uniqId}`);
 
-    uploadBytes(storageRef, file).then((snapshot) => {
+    uploadBytes(storageRef, file).then(() => {
       getDownloadURL(storageRef).then((url) => {
         this.productForm.get('imgUrl')!.setValue(url);
       });
@@ -87,7 +103,7 @@ export class AddNewItemComponent implements OnInit {
       discountUntil: this.discountUntil.toISOString().slice(0, -5),
       color: this.productForm.get('color')?.value,
       size: this.productForm.get('size')?.value,
-      review: null,
+      review: null
     };
   }
 
@@ -98,8 +114,13 @@ export class AddNewItemComponent implements OnInit {
 
   onSubmit() {
     this.createProduct();
-    this.fetch.addElementToList(this.newProduct);
+    this.addElementToList(this.newProduct);
     this.productForm.reset();
+  }
+
+  addElementToList(obj: IProduct): void {
+    const db = getDatabase();
+    set(refData(db, `list/${this.uniqId}`), obj);
   }
 
   onEdit() {

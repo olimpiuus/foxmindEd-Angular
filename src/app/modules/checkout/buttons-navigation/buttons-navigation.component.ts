@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router, NavigationStart, Event as NavigationEvent } from '@angular/router';
 import { PersonalDataService } from '../personal-data.service';
@@ -8,7 +8,7 @@ import { PersonalDataService } from '../personal-data.service';
   templateUrl: './buttons-navigation.component.html',
   styleUrls: ['./buttons-navigation.component.sass']
 })
-export class ButtonsNavigationComponent {
+export class ButtonsNavigationComponent implements OnDestroy {
   event$;
   route: string;
   activeForm: FormGroup;
@@ -45,8 +45,6 @@ export class ButtonsNavigationComponent {
     this.activeFormRoute = this.route.split('/').pop()!;
     if (this.activeFormRoute === 'checkout') {
       return;
-    }
-    if (this.activeFormRoute === 'summarize') {
     }
 
     this.activeForm = this.form.getFormByRoute(this.activeFormRoute) as FormGroup;

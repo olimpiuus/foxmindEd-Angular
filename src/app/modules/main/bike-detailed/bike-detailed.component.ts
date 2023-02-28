@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from '../data-fetch.service';
 
 @Component({
@@ -6,14 +6,15 @@ import { IProduct } from '../data-fetch.service';
   templateUrl: './bike-detailed.component.html',
   styleUrls: ['./bike-detailed.component.sass']
 })
-export class BikeDetailedComponent {
+export class BikeDetailedComponent implements OnInit {
   @Input() product: IProduct;
-  ngOnInit(){
+  ngOnInit() {
     console.log(this.product);
-    
   }
   public get rating() {
-    if (!this.product.review) {return 0}
+    if (!this.product.review) {
+      return 0;
+    }
     const arr = this.product.review.map((review) => {
       return review.rating;
     });
@@ -21,7 +22,9 @@ export class BikeDetailedComponent {
     return sum / arr.length;
   }
   public get ratingQuantity() {
-    if (!this.product.review) {return 0}
+    if (!this.product.review) {
+      return 0;
+    }
     return this.product.review.length;
   }
 

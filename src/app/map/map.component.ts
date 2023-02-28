@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -7,7 +7,7 @@ import { catchError, map } from 'rxjs/operators';
   selector: 'app-map',
   templateUrl: './map.component.html'
 })
-export class MapComponent implements OnInit {
+export class MapComponent {
   zoom = 12;
   center = {
     lat: 29.42023,
@@ -34,12 +34,6 @@ export class MapComponent implements OnInit {
     maxZoom: 15,
     minZoom: 8
   };
-
-  log() {
-    console.log(this);
-  }
-
-  ngOnInit() {}
 
   apiLoaded: Observable<boolean>;
 

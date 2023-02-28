@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { FormProvider } from '../checkout.component';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { PersonalDataService } from '../personal-data.service';
 
 @Component({
@@ -8,7 +7,7 @@ import { PersonalDataService } from '../personal-data.service';
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.sass']
 })
-export class AddressComponent {
+export class AddressComponent implements OnInit {
   formAddress: FormGroup;
   controlsAddress: string[];
 

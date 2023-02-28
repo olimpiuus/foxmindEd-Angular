@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataFetchService, IProduct } from '../data-fetch.service';
 import { Observable } from 'rxjs';
 
@@ -7,12 +7,15 @@ import { Observable } from 'rxjs';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.sass']
 })
-export class MainPageComponent {
-  products: Observable<IProduct[]>;
+export class MainPageComponent implements OnInit {
+  products: IProduct[];
+  productsObj: IProduct[];
 
   constructor(private requestService: DataFetchService) {}
 
   ngOnInit() {
-    this.products = this.requestService.getProductsArray();
+    this.requestService
+      .getProductsArray()
+      .subscribe((response) => (this.products = Object.values(response)));
   }
 }

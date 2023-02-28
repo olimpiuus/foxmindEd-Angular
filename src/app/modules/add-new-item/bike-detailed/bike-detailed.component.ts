@@ -10,17 +10,20 @@ export class BikeDetailedComponent {
   @Input() product: IProduct;
 
   public get rating() {
-    if (!this.product.review) {return 0}
+    if (!this.product.review) {
+      return 0;
+    }
 
-    const arr = this.product.review.map(review =>  review.rating)
-
+    const arr = this.product.review.map((review) => review.rating);
 
     const sum = arr.reduce((acc, el) => (acc += el), 0);
     return sum / arr.length;
   }
 
   public get ratingQuantity() {
-    if (!this.product.review) {return 0}
+    if (!this.product.review) {
+      return 0;
+    }
     return this.product.review.length;
   }
 

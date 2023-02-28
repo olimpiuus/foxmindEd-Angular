@@ -99,11 +99,18 @@
             "firebaseProject": "bike-shop-336d1",
             "firebaseHostingSite": "bike-shop-336d1"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "b2adc2e8-af82-451f-b424-3f50b661987a"
+    "analytics": "b2adc2e8-af82-451f-b424-3f50b661987a",
+    "schematicCollections": ["@angular-eslint/schematics"]
   }
 }
