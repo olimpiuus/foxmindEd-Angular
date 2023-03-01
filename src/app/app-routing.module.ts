@@ -10,6 +10,11 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'bikes/:id', component: ShoppingItemDetailedComponent },
   {
+    path: 'bikes/:id/edit',
+    loadChildren: () =>
+      import('./modules/add-new-item/add-new-item.module').then((m) => m.AddNewItemModule)
+  },
+  {
     path: 'checkout',
     loadChildren: () => import('./modules/checkout/checkout.module').then((m) => m.CheckoutModule)
   },

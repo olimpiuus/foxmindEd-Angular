@@ -18,6 +18,8 @@ import { StarRatingModule } from 'angular-star-rating';
 import { LimitCharactersPipe } from './limit-characters.pipe';
 import { BikeDetailedComponent } from 'src/app/modules/main/bike-detailed/bike-detailed.component';
 import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.component';
+import { ChangeItemBlockComponent } from './change-item-block/change-item-block.component';
+import { EditItemFormComponent } from './edit-item-form/edit-item-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.comp
     ShoppingItemDetailedComponent,
     LimitCharactersPipe,
     BikeDetailedComponent,
-    BtnAddNewItemComponent
+    BtnAddNewItemComponent,
+    ChangeItemBlockComponent,
+    EditItemFormComponent
   ],
   imports: [
     CommonModule,

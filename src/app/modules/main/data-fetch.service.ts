@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, map, from } from 'rxjs';
 
-import { getDatabase, set, ref, child, get } from 'firebase/database';
+import { getDatabase, ref, child, get } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
@@ -40,7 +40,6 @@ export interface IProduct {
 @Injectable({
   providedIn: 'root'
 })
-
 export class DataFetchService {
   dataList: IProduct[];
 
@@ -62,6 +61,8 @@ export class DataFetchService {
   }
 
   getProductById(id: number): Observable<IProduct> {
-    return this.getProductsArray().pipe(map((products) => products.find((r) => r.id === id)!));
+    return this.getProductsArray().pipe(
+      map((products) => Object.values(products).find((r) => r.id === id)!)
+    );
   }
 }

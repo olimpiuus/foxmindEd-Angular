@@ -9,6 +9,7 @@
   border-bottom: dotted 1px var(--color-text)
 
 @mixin card
+  position: relative
   --color-text:#6b6b6b
   color: var(--color-text)
   display: grid
@@ -91,3 +92,9 @@ mat-card
     // max-height: 80px
     padding-right: 5px
     overflow: hidden
+
+.edit-block
+  position: absolute
+  right: 2px
+  top: 5px
+  z-index: 5

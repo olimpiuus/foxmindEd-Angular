@@ -1,0 +1,13 @@
+@mixin btn
+  opacity: 0.2
+  &:hover
+    opacity: 1
+
+.delete
+  @include btn
+  color: red
+
+.edit
+  @include btn
+  color: orange
+  
