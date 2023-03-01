@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { StarRatingModule } from 'angular-star-rating';
 // components
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -54,7 +54,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    StarRatingModule.forRoot()
   ],
   bootstrap: [AppComponent],
   exports: [MapComponent]

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DataFetchService, IProduct } from '../data-fetch.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -8,10 +8,10 @@ import { Subscription } from 'rxjs';
   templateUrl: './shopping-item-detailed.component.html',
   styleUrls: ['./shopping-item-detailed.component.sass']
 })
-export class ShoppingItemDetailedComponent {
+export class ShoppingItemDetailedComponent implements OnInit, OnDestroy {
   sub: Subscription;
   id: number;
-  product: IProduct;
+  bike: IProduct;
 
   constructor(
     private _Activatedroute: ActivatedRoute,
@@ -35,24 +35,9 @@ export class ShoppingItemDetailedComponent {
   }
 
   getProduct() {
-    this.sub = this._requestService.getProductById(this.id).subscribe((x) => (this.product = x!));
+    this.sub = this._requestService.getProductById(this.id).subscribe((x) => (this.bike = x!));
   }
   unsubscribe() {
     this.sub.unsubscribe();
-  }
-
-  public get rating() {
-    const arr = this.product.review.map((review) => {
-      return review.rating;
-    });
-    const sum = arr.reduce((acc, el) => (acc += el), 0);
-    return sum / arr.length;
-  }
-  public get ratingQuantity() {
-    return this.product.review.length;
-  }
-
-  public get checked() {
-    return true;
   }
 }

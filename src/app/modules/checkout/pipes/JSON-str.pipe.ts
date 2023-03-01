@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'JSONStr'
 })
 export class JSONStrPipe implements PipeTransform {
-  transform(value: unknown, ...args: unknown[]): unknown {
+  transform(value: unknown): unknown {
     // const regex = /[.\]/g;
     return JSON.stringify(value)
       .split(',')

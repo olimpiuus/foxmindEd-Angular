@@ -4,7 +4,6 @@ import { ContactComponent } from './contact/contact.component';
 import { MainPageComponent } from './modules/main/main-page/main-page.component';
 import { ShoppingItemDetailedComponent } from './modules/main/shopping-item-detailed/shopping-item-detailed.component';
 import { PreloadAllModules } from '@angular/router';
-import { CheckoutComponent } from './modules/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -13,6 +12,11 @@ const routes: Routes = [
   {
     path: 'checkout',
     loadChildren: () => import('./modules/checkout/checkout.module').then((m) => m.CheckoutModule)
+  },
+  {
+    path: 'add-new-item',
+    loadChildren: () =>
+      import('./modules/add-new-item/add-new-item.module').then((m) => m.AddNewItemModule)
   }
 ];
 

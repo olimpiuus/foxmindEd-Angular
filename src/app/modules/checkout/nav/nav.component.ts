@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { PersonalDataService } from '../personal-data.service';
 import { Router, NavigationStart, Event as NavigationEvent } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router, NavigationStart, Event as NavigationEvent } from '@angular/rout
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.sass']
 })
-export class NavComponent {
+export class NavComponent implements AfterViewInit, OnDestroy {
   @ViewChild('list', { read: ElementRef, static: false }) navList: ElementRef;
   event$;
   routeName: string;
@@ -43,10 +43,10 @@ export class NavComponent {
   ngAfterViewInit() {
     this.removeDisabledClass();
   }
-  
+
   public createNewOrder() {
-    if(confirm('Delete current order and create new?')) {
-      this.form.resetForm()
+    if (confirm('Delete current order and create new?')) {
+      this.form.resetForm();
       this.router.navigate(['/']);
     }
   }

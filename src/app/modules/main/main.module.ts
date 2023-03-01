@@ -16,13 +16,17 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { StarRatingModule } from 'angular-star-rating';
 
 import { LimitCharactersPipe } from './limit-characters.pipe';
+import { BikeDetailedComponent } from 'src/app/modules/main/bike-detailed/bike-detailed.component';
+import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.component';
 
 @NgModule({
   declarations: [
     MainPageComponent,
     ShoppingItemComponent,
     ShoppingItemDetailedComponent,
-    LimitCharactersPipe
+    LimitCharactersPipe,
+    BikeDetailedComponent,
+    BtnAddNewItemComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +38,7 @@ import { LimitCharactersPipe } from './limit-characters.pipe';
     MatInputModule,
     StarRatingModule.forRoot()
   ],
-  providers: [DataFetchService]
+  providers: [DataFetchService],
+  exports: [BikeDetailedComponent]
 })
 export class MainModule {}

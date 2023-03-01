@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'titleForm'
 })
 export class TitleFormPipe implements PipeTransform {
-  transform(value: string, ...args: unknown[]): unknown {
+  transform(value: string): unknown {
     const titleAdj = {
       items: 'Order-list',
       address: 'Personal information address',

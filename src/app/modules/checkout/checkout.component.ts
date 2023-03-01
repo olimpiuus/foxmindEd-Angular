@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { IProduct } from '../main/data-fetch.service';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+
 import { PersonalDataService } from './personal-data.service';
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+
 export abstract class FormProvider {
   abstract getForm(): FormGroup;
 }
@@ -14,7 +14,7 @@ export abstract class FormProvider {
     class: 'checkout'
   }
 })
-export class CheckoutComponent {
+export class CheckoutComponent implements OnInit {
   form: FormGroup<any>;
   formGroups: any;
   constructor(private _form: PersonalDataService) {}

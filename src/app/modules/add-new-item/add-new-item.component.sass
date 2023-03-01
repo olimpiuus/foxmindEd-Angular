@@ -1,0 +1,100 @@
+@mixin grid-full-row
+  grid-column: 1/-1
+.form
+  display: grid
+  width: 100%
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
+  gap: 20px 
+
+.description-field
+  @include grid-full-row
+  
+
+.optional-title
+  @include grid-full-row
+
+.btn-preview
+  @include grid-full-row
+.custom-color-btn
+  height: 56px
+
+.custom-color-input
+  display: flex
+  &>mat-form-field
+    flex-grow: 1
+
+.btn-submit
+  width: 100%
+  margin-top: 10px
+// ================
+
+
+@mixin color-link
+  color: var(--color-link)
+.item 
+  display: grid
+  grid-auto-flow: column
+  grid-template-columns: 1fr 1fr
+
+  &__img-wrapper
+    text-align: center
+
+  &__img
+    width: 100%
+
+  &__bike-colors
+
+
+  &__description
+
+
+  &__title
+    font-weight: bold
+    font-size: 30px
+
+  &__price
+    margin-top: 20px
+    font-size: 20px
+    font-weight: bold
+
+  &__stars-and-quantity
+    margin-top: 10px
+    display: flex
+    align-items: center
+    gap: 10px
+    padding: 5px 0 
+
+  &__quantity-reviews
+    @include color-link
+
+  &__reviews-links
+    @include color-link
+    display: flex
+    justify-content: space-between
+
+  &__quantity-reviews
+    @include color-link
+
+  &__link-to-reviews
+
+  &__add-review
+
+
+  &__form
+    margin-top: 20px
+
+  &__select-title
+    font-weight: bold
+  &__select
+    width: 100%
+  &__btn-add
+    display: block
+    width: 100%
+  &__btn-wish
+    margin-top: 10px
+    width: 100%
+  &__availabillity
+
+
+
+

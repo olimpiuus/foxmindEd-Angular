@@ -1,6 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, map, from } from 'rxjs';
+
+import { getDatabase, set, ref, child, get } from 'firebase/database';
+import { initializeApp } from 'firebase/app';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyAwdSgV9p34AkgUCHwZHKaF6Bn0_SSirVw',
+  authDomain: 'foxminded-bike.firebaseapp.com',
+  projectId: 'foxminded-bike',
+  storageBucket: 'foxminded-bike.appspot.com',
+  messagingSenderId: '113082574962',
+  appId: '1:113082574962:web:b72a76111cf77559a6faeb'
+};
+const app = initializeApp(firebaseConfig);
 
 interface IReview {
   author: string;
@@ -17,28 +29,39 @@ export interface IProduct {
   discount: number;
   main: boolean;
   description: string;
-  shipping: string;
+  shipping: string | null;
   new: boolean;
   discountUntil: string;
   color: string[];
   size: string[];
-  review: IReview[];
+  review: IReview[] | null;
 }
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataFetchService {
-  constructor(private http: HttpClient) {}
-  productsUrl = '/assets/data/data.json';
+  dataList: IProduct[];
 
   getProductsArray(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(this.productsUrl);
+    const dbRef = ref(getDatabase());
+    return from(
+      get(child(dbRef, `list`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            return snapshot.val();
+          } else {
+            console.log('No data available');
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+    );
   }
 
   getProductById(id: number): Observable<IProduct> {
-    const url = `${this.productsUrl}`;
-    return this.http
-      .get<IProduct[]>(url)
-      .pipe(map((products) => products.find((r) => r.id === id)!));
+    return this.getProductsArray().pipe(map((products) => products.find((r) => r.id === id)!));
   }
 }

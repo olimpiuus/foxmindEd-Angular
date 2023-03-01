@@ -71,8 +71,8 @@ export class PersonalDataService {
     return this.cart;
   }
 
-  resetForm(){
-    this.profileForm.reset()
+  resetForm() {
+    this.profileForm.reset();
   }
 
   public get addressClass() {
@@ -103,7 +103,7 @@ export class PersonalDataService {
 
   getFormByRoute(routeForm: string) {
     const formNameAndRoute = Object.entries(this.routeAdj).find(
-      ([address, name]) => address === routeForm
+      ([address]) => address === routeForm
     );
     const formName = formNameAndRoute ? formNameAndRoute[1] : '';
     return this.profileForm.get(formName);
