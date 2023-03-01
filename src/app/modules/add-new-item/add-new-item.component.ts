@@ -4,7 +4,9 @@ import { IProduct, DataFetchService } from '../main/data-fetch.service';
 
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { map } from 'rxjs';
-import { getDatabase, set, ref as refData, child, get } from 'firebase/database';
+import { getDatabase, set, ref as refData, remove } from 'firebase/database';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-add-new-item',
   templateUrl: './add-new-item.component.html',
@@ -19,15 +21,14 @@ export class AddNewItemComponent implements OnInit {
   newProduct: IProduct;
   id: any;
   uniqId: number;
-
-  constructor(private fb: FormBuilder, private fetch: DataFetchService) {}
+  route = this._router.url;
+  stateFom = 'new';
+  oldId: number;
+  db = getDatabase();
+  constructor(private fb: FormBuilder, private fetch: DataFetchService, private _router: Router) {}
 
   ngOnInit(): void {
-    // this.fetch.getNextId().subscribe((id) => {
-    //   this.uniqId = id + 1;
-    // });
     this.getUniqId();
-
     this.productForm = this.fb.group({
       imgUrl: ['', Validators.required],
       price: ['', Validators.required],
@@ -43,6 +44,32 @@ export class AddNewItemComponent implements OnInit {
       size: ['', Validators.required],
       newColor: []
     });
+
+    if (this.route.includes('edit')) {
+      this.oldId = parseInt(this.route.split('/')[2]);
+      this.fetch.getProductById(this.oldId).subscribe((x) => {
+        this.newProduct = x!;
+        this.updateFormForEditingBike();
+        this.stateFom = 'edit';
+      });
+    }
+  }
+
+  updateFormForEditingBike() {
+    this.productForm.patchValue({
+      imgUrl: this.newProduct.imgUrl,
+      price: this.newProduct.price,
+      main: this.newProduct.main,
+      shop: this.newProduct.shop,
+      name: this.newProduct.name,
+      description: this.newProduct.description,
+      shipping: this.newProduct.shipping,
+      discount: this.newProduct.discount,
+      discountUntil: this.newProduct.discountUntil,
+      new: this.newProduct.new,
+      color: this.newProduct.color,
+      size: this.newProduct.size
+    });
   }
 
   getUniqId() {
@@ -54,7 +81,7 @@ export class AddNewItemComponent implements OnInit {
 
     this.fetch
       .getProductsArray()
-      .pipe(map((products) => uniqId(products.map((product) => product.id))))
+      .pipe(map((products) => uniqId(Object.values(products).map((product) => product.id))))
       .subscribe((response) => (this.uniqId = response));
   }
 
@@ -67,9 +94,8 @@ export class AddNewItemComponent implements OnInit {
   }
 
   private get discountUntil() {
-    return this.productForm.get('discountUntil')?.value
-      ? this.productForm.get('discountUntil')?.value
-      : null;
+    const value = this.productForm.get('discountUntil')?.value;
+    return value ? (value instanceof Date ? value.toISOString().slice(0, -5) : value) : null;
   }
 
   onLoadImg(event: any) {
@@ -100,7 +126,7 @@ export class AddNewItemComponent implements OnInit {
       description: this.productForm.get('description')?.value,
       shipping: this.shipping,
       new: this.productForm.get('new')?.value,
-      discountUntil: this.discountUntil.toISOString().slice(0, -5),
+      discountUntil: this.discountUntil,
       color: this.productForm.get('color')?.value,
       size: this.productForm.get('size')?.value,
       review: null
@@ -116,11 +142,14 @@ export class AddNewItemComponent implements OnInit {
     this.createProduct();
     this.addElementToList(this.newProduct);
     this.productForm.reset();
+
+    if (this.stateFom === 'edit') {
+      remove(refData(this.db, `list/${this.oldId - 1}`));
+    }
   }
 
   addElementToList(obj: IProduct): void {
-    const db = getDatabase();
-    set(refData(db, `list/${this.uniqId}`), obj);
+    set(refData(this.db, `list/${this.uniqId - 1}`), obj);
   }
 
   onEdit() {

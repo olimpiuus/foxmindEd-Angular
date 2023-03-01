@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IProduct } from '../data-fetch.service';
 
 @Component({
@@ -6,11 +6,9 @@ import { IProduct } from '../data-fetch.service';
   templateUrl: './bike-detailed.component.html',
   styleUrls: ['./bike-detailed.component.sass']
 })
-export class BikeDetailedComponent implements OnInit {
+export class BikeDetailedComponent {
   @Input() product: IProduct;
-  ngOnInit() {
-    console.log(this.product);
-  }
+
   public get rating() {
     if (!this.product.review) {
       return 0;
