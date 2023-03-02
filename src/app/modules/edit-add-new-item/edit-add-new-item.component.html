@@ -95,8 +95,8 @@
 </form>
 
 <app-bike-detailed
-  *ngIf="state === 'preview' && newProduct"
-  [product]="newProduct"
+  *ngIf="state === 'preview' && product"
+  [product]="product"
 ></app-bike-detailed>
 
 <button
@@ -117,5 +117,5 @@
   (click)="onSubmit()"
   [routerLink]="['/']"
 >
-  Add new item
+  {{btnSubmitText}}
 </button>
