@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IProduct, DataFetchService } from '../main/data-fetch.service';
 
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { map } from 'rxjs';
-import { getDatabase, set, ref as refData, remove } from 'firebase/database';
+import { getDatabase, set, ref as refData } from 'firebase/database';
 import { Router } from '@angular/router';
 
 @Component({
@@ -85,16 +84,7 @@ export class EditAddNewItemComponent implements OnInit {
   }
 
   getUniqId() {
-    const uniqId = (arr: any[]): any => {
-      const random0to10000 = () => Math.floor(Math.random() * 10000 + 1);
-      const id = random0to10000();
-      return !arr.includes(id) ? id : uniqId(arr);
-    };
-
-    this.fetch
-      .getProductsArray()
-      .pipe(map((products) => uniqId(Object.values(products).map((product) => product.id))))
-      .subscribe((response) => (this.uniqId = response));
+    return Math.floor(Math.random() * 1000000 + 1);
   }
 
   private get discount() {
