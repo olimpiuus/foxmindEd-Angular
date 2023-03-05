@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
   templateUrl: './edit-add-new-item.component.html',
   styleUrls: ['./edit-add-new-item.component.sass']
 })
-
 export class EditAddNewItemComponent implements OnInit {
   productForm: FormGroup;
   state = 'form';
@@ -26,19 +25,18 @@ export class EditAddNewItemComponent implements OnInit {
   oldId: number;
   db = getDatabase();
 
-
   constructor(private fb: FormBuilder, private fetch: DataFetchService, private _router: Router) {}
 
   ngOnInit(): void {
-    this.initFormGroup()
+    this.initFormGroup();
     if (this.route.includes('edit')) {
-      this.initEditingElement()
+      this.initEditingElement();
     } else {
-      this.getUniqId()
+      this.getUniqId();
     }
   }
-  
-  initFormGroup(){
+
+  initFormGroup() {
     this.productForm = this.fb.group({
       imgUrl: ['', Validators.required],
       price: ['', Validators.required],
@@ -53,16 +51,16 @@ export class EditAddNewItemComponent implements OnInit {
       color: ['', Validators.required],
       size: ['', Validators.required],
       newColor: []
-    })
+    });
   }
 
-  initEditingElement(){
+  initEditingElement() {
     this.oldId = parseInt(this.route.split('/')[2]);
     this.fetch.getProductById(this.oldId).subscribe((x) => {
       this.product = x!;
       this.updateFormForEditingBike();
       this.stateFom = 'edit';
-    })
+    });
   }
 
   updateFormForEditingBike() {
@@ -100,8 +98,8 @@ export class EditAddNewItemComponent implements OnInit {
     return value ? (value instanceof Date ? value.toISOString().slice(0, -5) : value) : null;
   }
 
-  public get btnSubmitText(){
-     return this.stateFom==='new'?'Add new item':'Save'
+  public get btnSubmitText() {
+    return this.stateFom === 'new' ? 'Add new item' : 'Save';
   }
 
   onLoadImg(event: any) {
@@ -139,7 +137,7 @@ export class EditAddNewItemComponent implements OnInit {
     };
   }
 
-  saveProduct(){
+  saveProduct() {
     this.product = {
       id: this.oldId,
       name: this.productForm.get('name')?.value,
@@ -164,12 +162,12 @@ export class EditAddNewItemComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.stateFom === 'new'){
-      this.createProduct();      
+    if (this.stateFom === 'new') {
+      this.createProduct();
     }
-    
+
     if (this.stateFom === 'edit') {
-      this.saveProduct()
+      this.saveProduct();
     }
 
     this.addElementToList(this.product);

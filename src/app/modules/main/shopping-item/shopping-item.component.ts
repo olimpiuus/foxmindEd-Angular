@@ -1,4 +1,5 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
 import { IProduct } from '../data-fetch.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { IProduct } from '../data-fetch.service';
 export class ShoppingItemComponent implements OnInit {
   @Input() product: IProduct;
   @Input() index: number;
+
+  constructor(private auth: AuthService) {}
 
   public get type(): string {
     return this.index ? 'small' : 'big';
@@ -35,6 +38,10 @@ export class ShoppingItemComponent implements OnInit {
       attributes.push(this.product.discountUntil);
     }
     return attributes;
+  }
+
+  public get viewEditBlock() {
+    return this.auth.customer.isAdmin || this.auth.customer.isOwner;
   }
 
   @HostBinding('class') get HeadingClass() {

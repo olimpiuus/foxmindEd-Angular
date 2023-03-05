@@ -22,6 +22,7 @@ import { LimitCharactersPipe } from './limit-characters.pipe';
 
 import { DataFetchService } from './data-fetch.service';
 
+
 @NgModule({
   declarations: [
     MainPageComponent,
@@ -42,6 +43,6 @@ import { DataFetchService } from './data-fetch.service';
     MatInputModule,
     StarRatingModule.forRoot()
   ],
-  providers: [DataFetchService],
+  providers: [DataFetchService]
 })
 export class MainModule {}
