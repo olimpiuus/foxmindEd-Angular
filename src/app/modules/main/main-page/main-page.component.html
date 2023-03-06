@@ -38,4 +38,4 @@
     [index]="i"
   ></app-shopping-item>
 </ul>
-<app-btn-add-new-item></app-btn-add-new-item>
+<app-btn-add-new-item *ngIf="isAdmin()"></app-btn-add-new-item>
