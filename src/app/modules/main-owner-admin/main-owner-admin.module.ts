@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { MainPageComponent } from './main-page/main-page.component';
 import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
+import { ChangeItemBlockComponent } from './change-item-block/change-item-block.component';
 
+import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.component';
 
 
 import { MatCardModule } from '@angular/material/card';
@@ -22,12 +24,13 @@ import { DataFetchService } from 'src/app/services/data-fetch.service';
 
 
 
-
 @NgModule({
   declarations: [
     MainPageComponent,
     ShoppingItemComponent,
     LimitCharactersPipe,
+    BtnAddNewItemComponent,
+    ChangeItemBlockComponent
   ],
   imports: [
     CommonModule,
@@ -41,4 +44,4 @@ import { DataFetchService } from 'src/app/services/data-fetch.service';
   ],
   providers: [DataFetchService]
 })
-export class MainModule {}
+export class MainOwnerAdminModule {}

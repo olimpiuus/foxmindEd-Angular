@@ -17,6 +17,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { StarRatingModule } from 'angular-star-rating';
 
+
 import { BikeDetailedComponent } from './bike-detailed/bike-detailed.component';
 
 @NgModule({

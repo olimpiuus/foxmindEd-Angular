@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IProduct } from '../../main/data-fetch.service';
+import { IProduct } from 'src/app/services/data-fetch.service';
 
 @Component({
   selector: 'app-bike-detailed',

@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IProduct, DataFetchService } from '../main/data-fetch.service';
+import { IProduct, DataFetchService } from 'src/app/services/data-fetch.service';
 
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getDatabase, set, ref as refData } from 'firebase/database';

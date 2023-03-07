@@ -6,10 +6,10 @@ import { StarRatingModule } from 'angular-star-rating';
 
 // components
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { ContactComponent } from './contact/contact.component';
-import { MapComponent } from './map/map.component';
-import { ContactFormComponent } from './contact-form/contact-form.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { MapComponent } from './components/map/map.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 // Matherial Design
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +29,11 @@ import { MainModule } from './modules/main/main.module';
 
 //Forms
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MainOwnerAdminModule } from './modules/main-owner-admin/main-owner-admin.module';
+import { ShoppingItemDetailedComponent } from './components/shopping-item-detailed/shopping-item-detailed.component';
+import { BikeDetailedComponent } from './components/bike-detailed/bike-detailed.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 @NgModule({
@@ -37,7 +42,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavBarComponent,
     ContactComponent,
     MapComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    ShoppingItemDetailedComponent,
+    BikeDetailedComponent
   ],
   imports: [
     BrowserModule,
@@ -52,10 +59,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     FormsModule,
     MainModule,
+    MainOwnerAdminModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
     StarRatingModule.forRoot()
   ],
   bootstrap: [AppComponent],

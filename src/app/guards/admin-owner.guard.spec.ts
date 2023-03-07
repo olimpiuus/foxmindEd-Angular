@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BikeEditGuard } from './bike-edit.guard';
+import { AdminOwnerGuard } from './admin-owner.guard';
 
-describe('BikeEditGuard', () => {
-  let guard: BikeEditGuard;
+describe('AdminOwnerGuard', () => {
+  let guard: AdminOwnerGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(BikeEditGuard);
+    guard = TestBed.inject(AdminOwnerGuard);
   });
 
   it('should be created', () => {
