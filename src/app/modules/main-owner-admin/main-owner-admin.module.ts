@@ -15,8 +15,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 
-// import { AppRoutingModule } from '../../app-routing.module';
-
 import { StarRatingModule } from 'angular-star-rating';
 
 import { LimitCharactersPipe } from './limit-characters.pipe';
