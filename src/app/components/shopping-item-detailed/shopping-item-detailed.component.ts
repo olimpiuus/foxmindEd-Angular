@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DataFetchService, IProduct } from '../data-fetch.service';
+import { DataFetchService, IProduct } from 'src/app/services/data-fetch.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 

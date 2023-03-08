@@ -37,7 +37,8 @@ export class MainPageComponent implements OnInit {
   logOut() {
     this.auth.logOut();
   }
+
   isAdmin(){
-    return this.auth.currentCustomer.role==='admin'
+    return this.auth.isAdmin
   }
 }

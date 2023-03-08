@@ -1,27 +1,40 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactComponent } from './contact/contact.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { MainPageComponent } from './modules/main/main-page/main-page.component';
-import { ShoppingItemDetailedComponent } from './modules/main/shopping-item-detailed/shopping-item-detailed.component';
+
 import { PreloadAllModules } from '@angular/router';
+import { AdminGuard } from './guards/admin.guard';
+import { CheckoutGuard } from './guards/checkout.guard';
+import { MainPageComponent as MainAdminPageComponent } from './modules/main-owner-admin/main-page/main-page.component';
+import { ShoppingItemDetailedComponent } from './components/shopping-item-detailed/shopping-item-detailed.component';
+import { AdminOwnerGuard } from './guards/admin-owner.guard';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
+  { path: 'extended', component: MainAdminPageComponent, canActivate:[AdminOwnerGuard] },
   { path: 'contact', component: ContactComponent },
   { path: 'bikes/:id', component: ShoppingItemDetailedComponent },
   {
     path: 'bikes/:id/edit',
     loadChildren: () =>
-      import('./modules/edit-add-new-item/edit-add-new-item.module').then((m) => m.EditAddNewItemModule)
+      import('./modules/edit-add-new-item/edit-add-new-item.module').then(
+        (m) => m.EditAddNewItemModule
+      ),
+    canActivate: [AdminOwnerGuard]
   },
   {
     path: 'checkout',
-    loadChildren: () => import('./modules/checkout/checkout.module').then((m) => m.CheckoutModule)
+    loadChildren: () => import('./modules/checkout/checkout.module').then((m) => m.CheckoutModule),
+    canActivate: [CheckoutGuard]
   },
   {
     path: 'add-new-item',
     loadChildren: () =>
-      import('./modules/edit-add-new-item/edit-add-new-item.module').then((m) => m.EditAddNewItemModule)
+      import('./modules/edit-add-new-item/edit-add-new-item.module').then(
+        (m) => m.EditAddNewItemModule
+      ),
+    canActivate: [AdminGuard]
   }
 ];
 
