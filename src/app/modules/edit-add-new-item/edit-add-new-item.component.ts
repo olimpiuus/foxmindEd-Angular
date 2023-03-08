@@ -3,32 +3,42 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IProduct, DataFetchService } from '../main/data-fetch.service';
 
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { map } from 'rxjs';
-import { getDatabase, set, ref as refData, remove } from 'firebase/database';
+import { getDatabase, set, ref as refData } from 'firebase/database';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-new-item',
-  templateUrl: './add-new-item.component.html',
-  styleUrls: ['./add-new-item.component.sass']
+  templateUrl: './edit-add-new-item.component.html',
+  styleUrls: ['./edit-add-new-item.component.sass']
 })
-export class AddNewItemComponent implements OnInit {
+
+export class EditAddNewItemComponent implements OnInit {
   productForm: FormGroup;
   state = 'form';
   colorList = ['Blue', 'Grey', 'Orange', 'Black'];
   sizeList = ['S', 'L', 'XL', 'XXL'];
   imageData: any;
-  newProduct: IProduct;
+  product: IProduct;
   id: any;
   uniqId: number;
   route = this._router.url;
   stateFom = 'new';
   oldId: number;
   db = getDatabase();
+
+
   constructor(private fb: FormBuilder, private fetch: DataFetchService, private _router: Router) {}
 
   ngOnInit(): void {
-    this.getUniqId();
+    this.initFormGroup()
+    if (this.route.includes('edit')) {
+      this.initEditingElement()
+    } else {
+      this.getUniqId()
+    }
+  }
+  
+  initFormGroup(){
     this.productForm = this.fb.group({
       imgUrl: ['', Validators.required],
       price: ['', Validators.required],
@@ -43,46 +53,38 @@ export class AddNewItemComponent implements OnInit {
       color: ['', Validators.required],
       size: ['', Validators.required],
       newColor: []
-    });
+    })
+  }
 
-    if (this.route.includes('edit')) {
-      this.oldId = parseInt(this.route.split('/')[2]);
-      this.fetch.getProductById(this.oldId).subscribe((x) => {
-        this.newProduct = x!;
-        this.updateFormForEditingBike();
-        this.stateFom = 'edit';
-      });
-    }
+  initEditingElement(){
+    this.oldId = parseInt(this.route.split('/')[2]);
+    this.fetch.getProductById(this.oldId).subscribe((x) => {
+      this.product = x!;
+      this.updateFormForEditingBike();
+      this.stateFom = 'edit';
+    })
   }
 
   updateFormForEditingBike() {
     this.productForm.patchValue({
-      imgUrl: this.newProduct.imgUrl,
-      price: this.newProduct.price,
-      main: this.newProduct.main,
-      shop: this.newProduct.shop,
-      name: this.newProduct.name,
-      description: this.newProduct.description,
-      shipping: this.newProduct.shipping,
-      discount: this.newProduct.discount,
-      discountUntil: this.newProduct.discountUntil,
-      new: this.newProduct.new,
-      color: this.newProduct.color,
-      size: this.newProduct.size
+      id: this.oldId,
+      imgUrl: this.product.imgUrl,
+      price: this.product.price,
+      main: this.product.main,
+      shop: this.product.shop,
+      name: this.product.name,
+      description: this.product.description,
+      shipping: this.product.shipping,
+      discount: this.product.discount,
+      discountUntil: this.product.discountUntil,
+      new: this.product.new,
+      color: this.product.color,
+      size: this.product.size
     });
   }
 
   getUniqId() {
-    const uniqId = (arr: any[]): any => {
-      const random0to10000 = () => Math.floor(Math.random() * 10000 + 1);
-      const id = random0to10000();
-      return !arr.includes(id) ? id : uniqId(arr);
-    };
-
-    this.fetch
-      .getProductsArray()
-      .pipe(map((products) => uniqId(Object.values(products).map((product) => product.id))))
-      .subscribe((response) => (this.uniqId = response));
+    return Math.floor(Math.random() * 1000000 + 1);
   }
 
   private get discount() {
@@ -96,6 +98,10 @@ export class AddNewItemComponent implements OnInit {
   private get discountUntil() {
     const value = this.productForm.get('discountUntil')?.value;
     return value ? (value instanceof Date ? value.toISOString().slice(0, -5) : value) : null;
+  }
+
+  public get btnSubmitText(){
+     return this.stateFom==='new'?'Add new item':'Save'
   }
 
   onLoadImg(event: any) {
@@ -115,7 +121,7 @@ export class AddNewItemComponent implements OnInit {
   }
 
   createProduct() {
-    this.newProduct = {
+    this.product = {
       id: this.uniqId,
       name: this.productForm.get('name')?.value,
       imgUrl: this.productForm.get('imgUrl')?.value,
@@ -133,23 +139,45 @@ export class AddNewItemComponent implements OnInit {
     };
   }
 
+  saveProduct(){
+    this.product = {
+      id: this.oldId,
+      name: this.productForm.get('name')?.value,
+      imgUrl: this.productForm.get('imgUrl')?.value,
+      price: this.productForm.get('price')?.value,
+      shop: this.productForm.get('shop')?.value,
+      discount: this.discount,
+      main: this.productForm.get('main')?.value,
+      description: this.productForm.get('description')?.value,
+      shipping: this.shipping,
+      new: this.productForm.get('new')?.value,
+      discountUntil: this.discountUntil,
+      color: this.productForm.get('color')?.value,
+      size: this.productForm.get('size')?.value,
+      review: this.product.review
+    };
+  }
+
   onPreview() {
     this.createProduct();
     this.state = 'preview';
   }
 
   onSubmit() {
-    this.createProduct();
-    this.addElementToList(this.newProduct);
-    this.productForm.reset();
-
-    if (this.stateFom === 'edit') {
-      remove(refData(this.db, `list/${this.oldId - 1}`));
+    if (this.stateFom === 'new'){
+      this.createProduct();      
     }
+    
+    if (this.stateFom === 'edit') {
+      this.saveProduct()
+    }
+
+    this.addElementToList(this.product);
+    this.productForm.reset();
   }
 
   addElementToList(obj: IProduct): void {
-    set(refData(this.db, `list/${this.uniqId - 1}`), obj);
+    set(refData(this.db, `list/${this.product.id - 1}`), obj);
   }
 
   onEdit() {

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddNewItemComponent } from './add-new-item.component';
+import { AddNewItemComponent } from './edit-add-new-item.component';
 
 describe('AddNewItemComponent', () => {
   let component: AddNewItemComponent;

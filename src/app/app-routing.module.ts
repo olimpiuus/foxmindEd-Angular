@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'bikes/:id/edit',
     loadChildren: () =>
-      import('./modules/add-new-item/add-new-item.module').then((m) => m.AddNewItemModule)
+      import('./modules/edit-add-new-item/edit-add-new-item.module').then((m) => m.EditAddNewItemModule)
   },
   {
     path: 'checkout',
@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'add-new-item',
     loadChildren: () =>
-      import('./modules/add-new-item/add-new-item.module').then((m) => m.AddNewItemModule)
+      import('./modules/edit-add-new-item/edit-add-new-item.module').then((m) => m.EditAddNewItemModule)
   }
 ];
 

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AddNewItemRoutingModule } from './add-new-item-routing.module';
-import { AddNewItemComponent } from './add-new-item.component';
+import { AddNewItemRoutingModule } from './edit-add-new-item-routing.module';
+import { EditAddNewItemComponent } from './edit-add-new-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -18,8 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { StarRatingModule } from 'angular-star-rating';
 
 import { BikeDetailedComponent } from './bike-detailed/bike-detailed.component';
+
 @NgModule({
-  declarations: [AddNewItemComponent, BikeDetailedComponent],
+  declarations: [EditAddNewItemComponent, BikeDetailedComponent],
   imports: [
     CommonModule,
     AddNewItemRoutingModule,
@@ -39,4 +40,4 @@ import { BikeDetailedComponent } from './bike-detailed/bike-detailed.component';
     StarRatingModule.forRoot()
   ]
 })
-export class AddNewItemModule {}
+export class EditAddNewItemModule {}
