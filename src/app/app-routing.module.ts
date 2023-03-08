@@ -12,7 +12,15 @@ import { CheckoutGuard } from './guards/checkout.guard';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
-  { path: 'extended', component: MainAdminPageComponent, canActivate:[AdminOwnerGuard] },
+  // { path: 'extended', component: MainAdminPageComponent, canActivate:[AdminOwnerGuard] },
+  
+  { path: 'extended',
+   loadChildren: () =>
+    import('./modules/main-owner-admin/main-owner-admin.module').then(
+     (m) => m.MainOwnerAdminModule),
+    canActivate:[AdminOwnerGuard] 
+  },
+
   { path: 'contact', component: ContactComponent },
   { path: 'bikes/:id', component: ShoppingItemDetailedComponent },
   {
@@ -29,7 +37,7 @@ const routes: Routes = [
     canActivate: [CheckoutGuard]
   },
   {
-    path: 'add-new-item',
+    path: 'extended/add-new-item',
     loadChildren: () =>
       import('./modules/edit-add-new-item/edit-add-new-item.module').then(
         (m) => m.EditAddNewItemModule
@@ -41,7 +49,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules
+      // preloadingStrategy: PreloadAllModules
     })
   ],
   exports: [RouterModule]
