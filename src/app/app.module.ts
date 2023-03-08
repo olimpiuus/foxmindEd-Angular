@@ -35,7 +35,9 @@ import { BikeDetailedComponent } from './components/bike-detailed/bike-detailed.
 import { MatSelectModule } from '@angular/material/select';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoginModalFormComponent } from './components/login-modal-form/login-modal-form.component';
 
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MapComponent,
     ContactFormComponent,
     ShoppingItemDetailedComponent,
-    BikeDetailedComponent
+    BikeDetailedComponent,
+    LoginModalFormComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatSelectModule,
     MatDialogModule,
+    AngularFireAuthModule,
     StarRatingModule.forRoot()
 
   ],
