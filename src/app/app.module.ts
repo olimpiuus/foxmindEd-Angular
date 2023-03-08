@@ -34,6 +34,7 @@ import { ShoppingItemDetailedComponent } from './components/shopping-item-detail
 import { BikeDetailedComponent } from './components/bike-detailed/bike-detailed.component';
 import { MatSelectModule } from '@angular/material/select';
 
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -65,7 +66,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatDialogModule,
     StarRatingModule.forRoot()
+
   ],
   bootstrap: [AppComponent],
   exports: [MapComponent],
