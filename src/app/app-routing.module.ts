@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './components/contact/contact.component';
 import { MainPageComponent } from './modules/main/main-page/main-page.component';
-
 import { PreloadAllModules } from '@angular/router';
-import { AdminGuard } from './guards/admin.guard';
-import { CheckoutGuard } from './guards/checkout.guard';
 import { MainPageComponent as MainAdminPageComponent } from './modules/main-owner-admin/main-page/main-page.component';
 import { ShoppingItemDetailedComponent } from './components/shopping-item-detailed/shopping-item-detailed.component';
+
 import { AdminOwnerGuard } from './guards/admin-owner.guard';
+import { AdminGuard } from './guards/admin.guard';
+import { CheckoutGuard } from './guards/checkout.guard';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
