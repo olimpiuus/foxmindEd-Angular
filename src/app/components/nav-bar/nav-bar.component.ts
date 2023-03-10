@@ -8,7 +8,9 @@ import { LoginModalFormComponent } from '../login-modal-form/login-modal-form.co
   styleUrls: ['./nav-bar.component.sass']
 })
 export class NavBarComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {
+    // this.dialog.closeAll()
+  }
 
   openModal() {
     const dialogRef = this.dialog.open(LoginModalFormComponent, {
@@ -17,4 +19,7 @@ export class NavBarComponent {
       panelClass: 'animated-modal'
     });
   }
+
+   
+
 }

@@ -7,11 +7,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
   styleUrls: ['./login-modal-form.component.sass']
 })
 export class LoginModalFormComponent {
-  // constructor(public afAuth: getAuth) {}
-  // signInWithEmail(...params:any[]){
-  //   console.log([params]);
-    
-  // }
+
   async signInWithEmail(email: string, password: string) {
     try {
       const result = await signInWithEmailAndPassword(getAuth() ,email, password);
@@ -20,4 +16,6 @@ export class LoginModalFormComponent {
       console.log(error);
     }
   }
+  // Get the user's ID token.
+
 }
