@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from 'src/app/services/auth.service';
 import { LoginModalFormComponent } from '../login-modal-form/login-modal-form.component';
 
 @Component({
@@ -8,9 +9,7 @@ import { LoginModalFormComponent } from '../login-modal-form/login-modal-form.co
   styleUrls: ['./nav-bar.component.sass']
 })
 export class NavBarComponent {
-  constructor(public dialog: MatDialog) {
-    // this.dialog.closeAll()
-  }
+  constructor(public dialog: MatDialog, private auth: AuthService) {}
 
   openModal() {
     const dialogRef = this.dialog.open(LoginModalFormComponent, {
@@ -20,6 +19,11 @@ export class NavBarComponent {
     });
   }
 
-   
+  public get customerRole() {
+    return this.auth.currentCustomer.role;
+  }
 
+  logOut() {
+    this.auth.logOut();
+  }
 }

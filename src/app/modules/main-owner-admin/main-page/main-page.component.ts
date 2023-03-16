@@ -38,7 +38,7 @@ export class MainPageComponent implements OnInit {
     this.auth.logOut();
   }
 
-  isAdmin(){
-    return this.auth.isAdmin
+  isAdmin() {
+    return this.auth.isAdmin;
   }
 }

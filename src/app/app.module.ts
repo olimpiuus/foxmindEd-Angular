@@ -72,7 +72,6 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     MatDialogModule,
     AngularFireAuthModule,
     StarRatingModule.forRoot()
-
   ],
   bootstrap: [AppComponent],
   exports: [MapComponent],

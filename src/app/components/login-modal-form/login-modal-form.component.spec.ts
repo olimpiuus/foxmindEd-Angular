@@ -8,9 +8,8 @@ describe('LoginModalFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginModalFormComponent ]
-    })
-    .compileComponents();
+      declarations: [LoginModalFormComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LoginModalFormComponent);
     component = fixture.componentInstance;
