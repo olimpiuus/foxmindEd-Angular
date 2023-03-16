@@ -1,36 +1,3 @@
-<button
-  mat-stroked-button
-  color="accent"
-  (click)="giveAdminRights()"
-  style="margin-bottom: 10px; margin-right: 5px"
->
-  Give Admin Rights
-</button>
-<button
-  mat-stroked-button
-  color="accent"
-  (click)="giveOwnerRights()"
-  style="margin-bottom: 10px; margin-right: 5px"
->
-  Give Owner Rights
-</button>
-<button
-  mat-stroked-button
-  color="accent"
-  (click)="giveCustomerRights()"
-  style="margin-bottom: 10px; margin-right: 5px"
->
-  Give Customer Rights
-</button>
-<button
-  mat-stroked-button
-  color="warn"
-  (click)="logOut()"
-  style="margin-bottom: 10px; margin-left: auto"
->
-  Log Out
-</button>
-
 <ul *ngIf="products" class="shopping-list">
   <app-shopping-item
     *ngFor="let product of products; let i = index"
