@@ -1,7 +1,7 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { ModalOpenCloseService } from './modal-open-close.service';
 
 interface ICustomer {
   role: 'admin' | 'owner' | 'customer' | null;
@@ -11,7 +11,7 @@ interface ICustomer {
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private router: Router, public dialog: MatDialog) {}
+  constructor(private router: Router, public modal: ModalOpenCloseService) {}
 
   currentCustomer: ICustomer = {
     role: null
@@ -55,15 +55,15 @@ export class AuthService {
       const uid = user.uid;
 
       if (uid === 'OEjrmnGYpaXYBiomkZfwQvuJjfV2') {
-        this.dialog.closeAll();
+        this.modal.closeModal();
         return this.logInAdmin();
       }
 
       if (uid === 'ceoI67mrC9dsSZIlhBWxjyCB7Yv2') {
-        this.dialog.closeAll();
+        this.modal.closeModal();
         return this.logInOwner();
       }
-      this.dialog.closeAll();
+      this.modal.closeModal();
       return this.logInCustomer();
     }
   });

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
-import { LoginModalFormComponent } from '../login-modal-form/login-modal-form.component';
+import { ModalOpenCloseService } from 'src/app/services/modal-open-close.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,14 +9,14 @@ import { LoginModalFormComponent } from '../login-modal-form/login-modal-form.co
   styleUrls: ['./nav-bar.component.sass']
 })
 export class NavBarComponent {
-  constructor(public dialog: MatDialog, private auth: AuthService) {}
+  constructor(
+    public dialog: MatDialog,
+    private auth: AuthService,
+    public modalService: ModalOpenCloseService
+  ) {}
 
   openModal() {
-    const dialogRef = this.dialog.open(LoginModalFormComponent, {
-      width: '500px',
-      height: '500px',
-      panelClass: 'animated-modal'
-    });
+    this.modalService.openModal();
   }
 
   public get customerRole() {

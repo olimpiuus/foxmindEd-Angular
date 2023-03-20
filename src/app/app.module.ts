@@ -38,6 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LoginModalFormComponent } from './components/login-modal-form/login-modal-form.component';
 
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     ContactFormComponent,
     ShoppingItemDetailedComponent,
     BikeDetailedComponent,
-    LoginModalFormComponent
+    LoginModalFormComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
