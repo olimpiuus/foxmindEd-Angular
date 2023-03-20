@@ -1,0 +1,7 @@
+<div class="modal-wrapper" [@openClose]="isOpen ? 'open' : 'closed'" (click)="closeModal()">
+  <div class="modal" (click)="stopPropagation($event)">
+    <div class="modal-content">
+      <app-login-modal-form></app-login-modal-form>
+    </div>
+  </div>
+</div>

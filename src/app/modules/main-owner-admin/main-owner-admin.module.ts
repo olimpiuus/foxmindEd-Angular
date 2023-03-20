@@ -7,22 +7,17 @@ import { ChangeItemBlockComponent } from './change-item-block/change-item-block.
 
 import { BtnAddNewItemComponent } from './btn-add-new-item/btn-add-new-item.component';
 
-
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 
-import { AppRoutingModule } from '../../app-routing.module';
-
 import { StarRatingModule } from 'angular-star-rating';
 
 import { LimitCharactersPipe } from './limit-characters.pipe';
 import { DataFetchService } from 'src/app/services/data-fetch.service';
-
-
-
+import { MainOwnerAdminRoutingModule } from './main-owner-admin-routing.module';
 
 @NgModule({
   declarations: [
@@ -34,13 +29,14 @@ import { DataFetchService } from 'src/app/services/data-fetch.service';
   ],
   imports: [
     CommonModule,
+    MainOwnerAdminRoutingModule,
     MatCardModule,
     MatIconModule,
-    AppRoutingModule,
     MatButtonModule,
     MatSelectModule,
     MatInputModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    MatIconModule
   ],
   providers: [DataFetchService]
 })

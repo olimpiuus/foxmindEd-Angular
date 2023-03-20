@@ -1,0 +1,10 @@
+<form (ngSubmit)="signInWithEmail(email.value, password.value)" class="form">
+  <mat-form-field>
+    <input matInput placeholder="Email" #email />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Password" type="password" #password />
+  </mat-form-field>
+  <button mat-raised-button type="submit">Sign In</button>
+  <a class="google-sign-in-btn" (click)="signInWithGoogle()"></a>
+</form>

@@ -7,10 +7,7 @@
   routerLinkActive="active"
 >
   <li class="card-big" [id]="product.id">
-    <app-change-item-block
-      [bikeId]="product.id"
-      class="edit-block"
-    ></app-change-item-block>
+    <app-change-item-block [bikeId]="product.id" class="edit-block"></app-change-item-block>
     <div class="card-big__top-group">
       <div class="card-big__img-wrapper">
         <img [src]="product.imgUrl" alt="" class="card-big__img" />
@@ -45,10 +42,7 @@
   routerLinkActive="active"
 >
   <li class="card" [id]="product.id">
-    <app-change-item-block
-      [bikeId]="product.id"
-      class="edit-block"
-    ></app-change-item-block>
+    <app-change-item-block [bikeId]="product.id" class="edit-block"></app-change-item-block>
     <div class="card__top-group">
       <div class="card__sale-percent">{{ product.discount }}% off</div>
       <img [src]="product.imgUrl" alt="" class="card__img" />

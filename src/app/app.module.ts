@@ -34,7 +34,11 @@ import { ShoppingItemDetailedComponent } from './components/shopping-item-detail
 import { BikeDetailedComponent } from './components/bike-detailed/bike-detailed.component';
 import { MatSelectModule } from '@angular/material/select';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { LoginModalFormComponent } from './components/login-modal-form/login-modal-form.component';
 
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,9 @@ import { MatSelectModule } from '@angular/material/select';
     MapComponent,
     ContactFormComponent,
     ShoppingItemDetailedComponent,
-    BikeDetailedComponent
+    BikeDetailedComponent,
+    LoginModalFormComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +71,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatDialogModule,
+    AngularFireAuthModule,
     StarRatingModule.forRoot()
   ],
   bootstrap: [AppComponent],
