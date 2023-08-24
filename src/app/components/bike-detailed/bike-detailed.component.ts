@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IProduct } from 'src/app/services/data-fetch.service';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
   selector: 'app-bike-detailed',
@@ -8,6 +9,8 @@ import { IProduct } from 'src/app/services/data-fetch.service';
 })
 export class BikeDetailedComponent {
   @Input() product: IProduct;
+  constructor(private cartService: ShoppingCartService){
+  }
 
   public get rating() {
     if (!this.product.review) {
@@ -28,5 +31,11 @@ export class BikeDetailedComponent {
 
   public get checked() {
     return true;
+  }
+
+  public addToCart(id:Number){
+    console.log('add');
+    
+    this.cartService.addToCart(id)
   }
 }

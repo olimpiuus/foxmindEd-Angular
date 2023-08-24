@@ -17,14 +17,10 @@ export class AuthService {
     role: null
   };
   public logInAdmin() {
-    console.log('admin');
-
     this.currentCustomer.role = 'admin';
     this.router.navigateByUrl('/extended');
   }
   public logInOwner() {
-    console.log('owner');
-
     this.currentCustomer.role = 'owner';
     this.router.navigateByUrl('/extended');
   }
@@ -59,7 +55,7 @@ export class AuthService {
         return this.logInAdmin();
       }
 
-      if (uid === 'ceoI67mrC9dsSZIlhBWxjyCB7Yv2') {
+      if (uid === 'gF6RRLzk87OYOdT1W4mCmlWGkL73') {
         this.modal.closeModal();
         return this.logInOwner();
       }

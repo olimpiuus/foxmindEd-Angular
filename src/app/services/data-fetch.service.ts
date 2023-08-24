@@ -60,7 +60,7 @@ export class DataFetchService {
     );
   }
 
-  getProductById(id: number): Observable<IProduct> {
+  getProductById(id: Number): Observable<IProduct> {
     return this.getProductsArray().pipe(
       map((products) => Object.values(products).find((r) => r.id === id)!)
     );

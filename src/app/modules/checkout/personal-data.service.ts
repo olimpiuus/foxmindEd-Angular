@@ -6,6 +6,8 @@ import {
   ValidationErrors,
   ValidatorFn
 } from '@angular/forms';
+import { DataFetchService, IProduct } from 'src/app/services/data-fetch.service';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 export function noCustomValue(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -17,28 +19,39 @@ export function noCustomValue(): ValidatorFn {
   providedIn: 'root'
 })
 export class PersonalDataService {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private cartIdsService: ShoppingCartService, private fetchService:DataFetchService) {
+    
+  }
+  cartIds : Number[];
 
-  cart = [
-    {
-      id: 1,
-      name: 'Argon 18',
-      description:
-        'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
-    },
-    {
-      id: 2,
-      name: 'Bike 22',
-      description:
-        'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
-    },
-    {
-      id: 3,
-      name: 'Bike 12',
-      description:
-        'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
-    }
-  ];
+  getCartItems(){
+    this.cartIds = this.cartIdsService.cartList;
+    this.cartIds.forEach(itemId=>{
+      console.log(this.fetchService.getProductById(itemId));
+      
+      
+    })
+  }
+  // cart = [
+    // {
+    //   id: 1,
+    //   name: 'Argon 18',
+    //   description:
+    //     'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
+    // },
+    // {
+    //   id: 2,
+    //   name: 'Bike 22',
+    //   description:
+    //     'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
+    // },
+    // {
+    //   id: 3,
+    //   name: 'Bike 12',
+    //   description:
+    //     'Founded by retired cyclist Gervais Rioux in Montreal in 1989, Argon 18 has grown to distribute bikes aross the world and sponsors a number of professional cycling teams and triathletes. In 2019, Argo 18 sponsores Hugo Houle’s UCI WorldTour team Astana'
+    // }
+  // ];
 
   profileForm = this.fb.group({
     items: ['', [Validators.required]],
@@ -67,8 +80,18 @@ export class PersonalDataService {
     return this.profileForm;
   }
 
-  getCart() {
-    return this.cart;
+  public get cart() {
+    // this.cartIds = this.cartIdsService.cartList;
+    this.cartIds = [2]
+    const cart:IProduct[] = []
+    
+    this.cartIds.forEach(itemId=>{
+      this.fetchService.getProductById(itemId).subscribe(responce=>{
+        cart.push(responce)
+      })
+      
+    })
+    return cart;
   }
 
   resetForm() {

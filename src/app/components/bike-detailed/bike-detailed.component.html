@@ -51,6 +51,7 @@
         color="primary"
         [disabled]="checked ? null : true"
         class="item__btn-add"
+        (click)="addToCart(product.id)"
       >
         <mat-icon>shopping_cart</mat-icon> Add to cart
       </button>

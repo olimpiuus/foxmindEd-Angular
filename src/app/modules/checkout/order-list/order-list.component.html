@@ -1,5 +1,6 @@
 <mat-selection-list #shoes [formControl]="form">
-  <mat-list-option *ngFor="let item of items" style="height: 100px" [value]="item.name">
+  <mat-list-option class="shopping__list-option" *ngFor="let item of items" style="height: 100px" [value]="item.name" >
+    <img [src]="item.imgUrl" [alt]="item.name" class="shopping__image-bike">
     <p>{{ item.name }}</p>
     <p>{{ item.description | limitCharacters }}</p>
   </mat-list-option>
